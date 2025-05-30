@@ -45,6 +45,21 @@ public class PlayerControls : MonoBehaviour
         buttonBindings[button] = action;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("NodePickup")) 
+        {
+            if(collision.gameObject.name == "LeftAbilityPickup")
+            {
+                changeButtonBinding(KeyCode.LeftArrow, new Walk());
+                Debug.Log("left move picked up");
+            }
+
+            Destroy(collision.gameObject);
+        }
+        
+    }
+
     private void Update()
     {
         movement.purgeHorizontalVelocity();
@@ -53,7 +68,7 @@ public class PlayerControls : MonoBehaviour
             if (Input.GetKey(button))
             {
                 buttonBindings[button].execute(gameObject);
-                Debug.Log(GetComponent<Rigidbody2D>().linearVelocityX);
+                //Debug.Log(GetComponent<Rigidbody2D>().linearVelocityX);
             }
         }
     }
