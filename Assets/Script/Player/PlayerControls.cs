@@ -49,10 +49,10 @@ public class PlayerControls : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("NodePickup")) 
         {
-            if(collision.gameObject.name == "LeftAbilityPickup")
+            if(collision.gameObject.GetComponent<NodePickup>().GetNodeType() == AbilityNodePickup.LEFT.ToString())
             {
                 changeButtonBinding(KeyCode.LeftArrow, new Walk());
-                Debug.Log("left move picked up");
+                Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");
             }
 
             Destroy(collision.gameObject);
