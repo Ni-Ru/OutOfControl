@@ -6,7 +6,6 @@ public class NodePickup : MonoBehaviour
 
     public string GetNodeType()
     {
-        nodeType = AbilityNodePickup.LEFT.ToString();
         return nodeType;
     }
 }
