@@ -51,7 +51,11 @@ public class PlayerControls : MonoBehaviour
         {
             if(collision.gameObject.GetComponent<NodePickup>().GetNodeType() == AbilityNodePickup.LEFT.ToString())
             {
-                changeButtonBinding(KeyCode.LeftArrow, new Walk());
+                Walk left = new Walk();
+                addAvailableAction(left);
+
+                changeButtonBinding(KeyCode.LeftArrow, left);
+
                 Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");
             }
 
