@@ -4,13 +4,24 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rigid;
+    private Transform playerPosition;
+
     bool isGrounded = true;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] Vector2 groundOffset;
+
+    [SerializeField] LayerMask groundLayer;
+
+    bool isTouchingWall = false;
+    [SerializeField] float wallCollisionRadius;
+    [SerializeField] Vector2 rightOffset;
+    [SerializeField] Vector2 leftOffset;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        playerPosition = GetComponent<Transform>();
+
     }
 
     public void addHorizontalMovement(float speed)
@@ -18,10 +29,8 @@ public class PlayerMovement : MonoBehaviour
         rigid.linearVelocityX += speed;
     }
 
-    public void addVerticalMovement(float speed)
+    public void addJump(float speed)
     {
-        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.58f, 0.05f), CapsuleDirection2D.Horizontal, 0 , groundLayer);
-
         if (isGrounded) 
         {
             rigid.linearVelocityY = speed;
@@ -29,9 +38,33 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    public void addClimbingUp(float speed)
+    {
+        if (isTouchingWall) 
+        {
+            //playerPosition.transform.position = playerPosition.transform.position + new Vector3(0, verticalInput * speed * Time.deltaTime, 0);
+            rigid.linearVelocityY = speed;
+        }
+    }
+
     public void purgeHorizontalVelocity()
     {
         rigid.linearVelocityX = 0;
     }
-    
+
+    private void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, groundOffset, CapsuleDirection2D.Horizontal, 0, groundLayer);
+
+        isTouchingWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, wallCollisionRadius, groundLayer) ||
+                         Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, wallCollisionRadius, groundLayer);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, wallCollisionRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, wallCollisionRadius);
+    }
+
 }

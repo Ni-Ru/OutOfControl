@@ -68,6 +68,14 @@ public class PlayerControls : MonoBehaviour
                 changeButtonBinding(KeyCode.Z, jump);
             }
 
+            if(nodeType == AbilityNodePickup.CLIMBUP.ToString()) 
+            { 
+                ClimbUp climbUp = new ClimbUp();
+                addAvailableAction(climbUp);
+
+                changeButtonBinding (KeyCode.UpArrow, climbUp);
+            }
+
             Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");
 
             Destroy(collision.gameObject);

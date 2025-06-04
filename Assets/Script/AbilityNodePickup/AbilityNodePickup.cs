@@ -4,5 +4,8 @@ public enum AbilityNodePickup
 {
     RIGHT,
     LEFT,
-    JUMP
+    JUMP,
+    CLIMBUP,
+    CLIMBDOWN,
+    JUMPDOWN
 }
