@@ -47,17 +47,28 @@ public class PlayerControls : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        string nodeType = collision.gameObject.GetComponent<NodePickup>().GetNodeType();
+
         if (collision.gameObject.CompareTag("NodePickup")) 
         {
-            if(collision.gameObject.GetComponent<NodePickup>().GetNodeType() == AbilityNodePickup.LEFT.ToString())
+            if(nodeType == AbilityNodePickup.LEFT.ToString())
             {
                 Walk left = new Walk();
                 addAvailableAction(left);
 
                 changeButtonBinding(KeyCode.LeftArrow, left);
 
-                Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");
             }
+
+            if(nodeType == AbilityNodePickup.JUMP.ToString()) 
+            {
+                Jump jump = new Jump();
+                addAvailableAction(jump);
+
+                changeButtonBinding(KeyCode.UpArrow, jump);
+            }
+
+            Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");
 
             Destroy(collision.gameObject);
         }
@@ -67,6 +78,7 @@ public class PlayerControls : MonoBehaviour
     private void Update()
     {
         movement.purgeHorizontalVelocity();
+        //movement.purgeVerticalVelocity();
         foreach(KeyCode button in buttonBindings.Keys)
         {
             if (Input.GetKey(button))
