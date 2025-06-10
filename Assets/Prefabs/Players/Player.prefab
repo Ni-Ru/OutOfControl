@@ -118,11 +118,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 8222322476402736269}
-  groundOffset: {x: 0.58, y: 0.05}
+  groundOffset: {x: 0, y: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   wallCollisionRadius: 0.25
+  groundCollisionRadius: 0.25
   rightOffset: {x: 0.57, y: 0.5}
   leftOffset: {x: -0.565, y: 0.5}
 --- !u!61 &7190896777270536783
