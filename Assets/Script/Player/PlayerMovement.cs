@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerPosition;
 
     bool isGrounded = true;
-    [SerializeField] Transform groundCheck;
     [SerializeField] Vector2 groundOffset;
 
     [SerializeField] LayerMask groundLayer;
@@ -55,8 +54,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //isGrounded = Physics2D.OverlapCapsule(groundCheck.position, groundOffset, CapsuleDirection2D.Horizontal, 0, groundLayer);
-
         isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + groundOffset, groundCollisionRadius, groundLayer);
 
         isTouchingWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, wallCollisionRadius, groundLayer) ||
