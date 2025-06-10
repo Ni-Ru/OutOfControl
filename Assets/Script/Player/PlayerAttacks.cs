@@ -27,9 +27,8 @@ public class PlayerAttacks : MonoBehaviour
         if (isBombSpawned == false)
         {
             //playerPosition = this.transform.position;
-            Instantiate(bomb, new Vector3(playerPosition.x + 2, playerPosition.y, playerPosition.z), quaternion.identity);
+            Instantiate(bomb, new Vector3(playerPosition.x + 0.5f, playerPosition.y + 0.5f, playerPosition.z), quaternion.identity);
             isBombSpawned = true;
-
         }
     }
 
