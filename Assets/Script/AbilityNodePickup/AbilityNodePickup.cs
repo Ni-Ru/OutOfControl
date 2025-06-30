@@ -11,4 +11,5 @@ public enum AbilityNodePickup
     BOMB,
     LASERSWORD,
     DASH,
+    SEE_INVIS
 }

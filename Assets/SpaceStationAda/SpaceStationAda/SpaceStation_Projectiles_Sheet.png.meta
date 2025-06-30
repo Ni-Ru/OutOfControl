@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpaceStation_Projectiles_Sheet_0: -2491897991407786572
+      SpaceStation_Projectiles_Sheet_1: 578769701460269394
+      SpaceStation_Projectiles_Sheet_10: 4652178236058888315
+      SpaceStation_Projectiles_Sheet_11: -4141415201263758634
+      SpaceStation_Projectiles_Sheet_12: -6360585957166933984
+      SpaceStation_Projectiles_Sheet_13: 1694342715689215017
+      SpaceStation_Projectiles_Sheet_14: -1109516034565338985
+      SpaceStation_Projectiles_Sheet_2: -5013869213346217127
+      SpaceStation_Projectiles_Sheet_3: 2589538498700673718
+      SpaceStation_Projectiles_Sheet_4: -4184725848932958503
+      SpaceStation_Projectiles_Sheet_5: -5629259772785542857
+      SpaceStation_Projectiles_Sheet_6: 7535624244353236731
+      SpaceStation_Projectiles_Sheet_7: 6451697359851154763
+      SpaceStation_Projectiles_Sheet_8: 4790514476266605518
+      SpaceStation_Projectiles_Sheet_9: -5440748572214945757
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
