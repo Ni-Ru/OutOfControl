@@ -18,7 +18,7 @@ public class PlayerControls : MonoBehaviour
         buttonAvailability.Add(KeyCode.UpArrow, true);
         buttonAvailability.Add(KeyCode.DownArrow, false);
         buttonAvailability.Add(KeyCode.Z, true); // Y in german keyboard
-        buttonAvailability.Add(KeyCode.X, false);
+        buttonAvailability.Add(KeyCode.X, true);
         availableActions = new List<PlayerAction>();
         buttonBindings = new Dictionary<KeyCode, PlayerAction>();
         movement = GetComponent<PlayerMovement>();
@@ -74,6 +74,14 @@ public class PlayerControls : MonoBehaviour
                 addAvailableAction(climbUp);
 
                 changeButtonBinding (KeyCode.UpArrow, climbUp);
+            }
+
+            if (nodeType == AbilityNodePickup.BOMB.ToString())
+            {
+                SpawnBomb spawnBomb = new SpawnBomb();
+                addAvailableAction(spawnBomb);
+
+                changeButtonBinding(KeyCode.X, spawnBomb);
             }
 
             Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");

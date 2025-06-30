@@ -1,0 +1,7 @@
+.panel {
+    background-color: rgba(12, 6, 6, 0.65);
+}
+
+.hide {
+    display: flex;
+}
