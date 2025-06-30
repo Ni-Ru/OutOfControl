@@ -3,13 +3,16 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public int maxEnergy { get; private set; }
+    public static float maxEnergyLimit = 100;
+    public float maxEnergy { get; private set; }
+    public float currentEnergy;
 
     private PlayerMovement movement;
 
     private Dictionary<KeyCode, bool> buttonAvailability;
     private List<PlayerAction> availableActions;
     private Dictionary<KeyCode, PlayerAction> buttonBindings;
+    private float energyRechargeRate = 50;
 
 
     private void Awake()
@@ -25,7 +28,7 @@ public class PlayerControls : MonoBehaviour
         availableActions = new List<PlayerAction>();
         buttonBindings = new Dictionary<KeyCode, PlayerAction>();
         movement = GetComponent<PlayerMovement>();
-        maxEnergy = 100;
+        maxEnergy = maxEnergyLimit;
 
         Walk right = new Walk();
         right.isRight = true;
@@ -115,5 +118,13 @@ public class PlayerControls : MonoBehaviour
                 //Debug.Log(GetComponent<Rigidbody2D>().linearVelocityX);
             }
         }
+        currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.deltaTime * maxEnergy / maxEnergyLimit);
+    }
+
+    public bool tryConsumeEnergy(float amount)
+    {
+        if (amount > currentEnergy) return false;
+        currentEnergy -= amount;
+        return true;
     }
 }
