@@ -9,6 +9,6 @@ public class Walk : PlayerAction
     public override void execute(GameObject player)
     {
         if (movement == null) movement = player.GetComponent<PlayerMovement>();
-        movement.addHorizontalMovement(Time.fixedDeltaTime * walkingSpeed * (isRight ? 1 : -1));
+        movement.addHorizontalMovement(Time.fixedDeltaTime * walkingSpeed * (isRight ? 1 : -1) * player.GetComponent<PlayerControls>().maxEnergy / 100f);
     }
 }

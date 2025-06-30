@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
+    public int maxEnergy { get; private set; }
+
     private PlayerMovement movement;
 
     private Dictionary<KeyCode, bool> buttonAvailability;
@@ -18,10 +20,16 @@ public class PlayerControls : MonoBehaviour
         buttonAvailability.Add(KeyCode.UpArrow, true);
         buttonAvailability.Add(KeyCode.DownArrow, false);
         buttonAvailability.Add(KeyCode.Z, true); // Y in german keyboard
+<<<<<<< Updated upstream
         buttonAvailability.Add(KeyCode.X, false);
+=======
+        buttonAvailability.Add(KeyCode.X, true);
+        buttonAvailability.Add(KeyCode.I, true);
+>>>>>>> Stashed changes
         availableActions = new List<PlayerAction>();
         buttonBindings = new Dictionary<KeyCode, PlayerAction>();
         movement = GetComponent<PlayerMovement>();
+        maxEnergy = 100;
 
         Walk right = new Walk();
         right.isRight = true;
@@ -42,7 +50,10 @@ public class PlayerControls : MonoBehaviour
     public void changeButtonBinding(KeyCode button, PlayerAction action)
     {
         if (!buttonAvailability[button]) return;
+        if (buttonBindings.ContainsKey(button)) maxEnergy += buttonBindings[button].maxEnergyPenalty;
         buttonBindings[button] = action;
+        maxEnergy -= action.maxEnergyPenalty;
+        Debug.Log(maxEnergy);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,6 +87,24 @@ public class PlayerControls : MonoBehaviour
                 changeButtonBinding (KeyCode.UpArrow, climbUp);
             }
 
+<<<<<<< Updated upstream
+=======
+            if (nodeType == AbilityNodePickup.BOMB.ToString())
+            {
+                SpawnBomb spawnBomb = new SpawnBomb();
+                addAvailableAction(spawnBomb);
+
+                changeButtonBinding(KeyCode.X, spawnBomb);
+            }
+
+            if(nodeType == AbilityNodePickup.SEE_INVIS.ToString())
+            {
+                SeeInvisibility seeInvis = new SeeInvisibility();
+                addAvailableAction(seeInvis);
+                changeButtonBinding(KeyCode.I, seeInvis);
+            }
+
+>>>>>>> Stashed changes
             Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");
 
             Destroy(collision.gameObject);

@@ -859,7 +859,37 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpaceStation_Android_Sheet_0: -8999699690506140255
+      SpaceStation_Android_Sheet_1: -444241825710566810
+      SpaceStation_Android_Sheet_10: -5693265004120377137
+      SpaceStation_Android_Sheet_11: 1810493406806305970
+      SpaceStation_Android_Sheet_12: -6308091542922452485
+      SpaceStation_Android_Sheet_13: 7418907030013940695
+      SpaceStation_Android_Sheet_14: 7960695949888255447
+      SpaceStation_Android_Sheet_15: -3703078176865904987
+      SpaceStation_Android_Sheet_16: 3759140713048826107
+      SpaceStation_Android_Sheet_17: 6732625976180619573
+      SpaceStation_Android_Sheet_18: -3126040177303648920
+      SpaceStation_Android_Sheet_19: -7365516800269633995
+      SpaceStation_Android_Sheet_2: -8984473068138226160
+      SpaceStation_Android_Sheet_20: -6761895325602630047
+      SpaceStation_Android_Sheet_21: -6407022161516570159
+      SpaceStation_Android_Sheet_22: -7190121171542820598
+      SpaceStation_Android_Sheet_23: 7128154474853369870
+      SpaceStation_Android_Sheet_24: 2510330156594552515
+      SpaceStation_Android_Sheet_25: -5243080005532776921
+      SpaceStation_Android_Sheet_26: -2050295437693543702
+      SpaceStation_Android_Sheet_27: -1098310069967309374
+      SpaceStation_Android_Sheet_28: 6662115675556978899
+      SpaceStation_Android_Sheet_29: 6094531407475153588
+      SpaceStation_Android_Sheet_3: -331890405143047164
+      SpaceStation_Android_Sheet_4: -3858497612407100794
+      SpaceStation_Android_Sheet_5: 6882390472210802780
+      SpaceStation_Android_Sheet_6: -4717981406358745375
+      SpaceStation_Android_Sheet_7: -8936225123442645309
+      SpaceStation_Android_Sheet_8: 3071628165531355896
+      SpaceStation_Android_Sheet_9: 4404507076429614105
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
