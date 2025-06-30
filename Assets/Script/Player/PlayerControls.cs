@@ -86,7 +86,6 @@ public class PlayerControls : MonoBehaviour
     private void Update()
     {
         movement.purgeHorizontalVelocity();
-        //movement.purgeVerticalVelocity();
         foreach(KeyCode button in buttonBindings.Keys)
         {
             if (Input.GetKey(button))

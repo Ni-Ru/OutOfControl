@@ -7,5 +7,8 @@ public enum AbilityNodePickup
     JUMP,
     CLIMBUP,
     CLIMBDOWN,
-    JUMPDOWN
+    JUMPDOWN,
+    BOMB,
+    LASERSWORD,
+    DASH,
 }

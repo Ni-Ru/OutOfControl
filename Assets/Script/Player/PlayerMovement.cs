@@ -7,13 +7,13 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerPosition;
 
     bool isGrounded = true;
-    [SerializeField] Transform groundCheck;
     [SerializeField] Vector2 groundOffset;
 
     [SerializeField] LayerMask groundLayer;
 
     bool isTouchingWall = false;
     [SerializeField] float wallCollisionRadius;
+    [SerializeField] float groundCollisionRadius;
     [SerializeField] Vector2 rightOffset;
     [SerializeField] Vector2 leftOffset;
 
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, groundOffset, CapsuleDirection2D.Horizontal, 0, groundLayer);
+        isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + groundOffset, groundCollisionRadius, groundLayer);
 
         isTouchingWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, wallCollisionRadius, groundLayer) ||
                          Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, wallCollisionRadius, groundLayer);
@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere((Vector2)transform.position + groundOffset, groundCollisionRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, wallCollisionRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, wallCollisionRadius);
     }
