@@ -93,7 +93,6 @@ public class PlayerControls : MonoBehaviour
 
                 changeButtonBinding(KeyCode.X, spawnBomb);
             }
-
             if(nodeType == AbilityNodePickup.SEE_INVIS.ToString())
             {
                 SeeInvisibility seeInvis = new SeeInvisibility();
