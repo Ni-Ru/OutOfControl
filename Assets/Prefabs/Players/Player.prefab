@@ -105,6 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEnergy: 0
+  abilityInventoryMenu: {fileID: 0}
+  currentEnergyText: {fileID: 0}
+  maxEnergyText: {fileID: 0}
+  abilityUIButtons: []
 --- !u!114 &1839828944975238639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +139,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4597496601283181436}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 373700a06bff17c4a9b4d7f3bf00ea88, type: 3}
   m_Name: 

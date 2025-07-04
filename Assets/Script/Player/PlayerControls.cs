@@ -1,11 +1,17 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
 {
     public static float maxEnergyLimit = 100;
     public float maxEnergy { get; private set; }
     public float currentEnergy;
+    [SerializeField] GameObject abilityInventoryMenu;
+    [SerializeField] TextMeshProUGUI currentEnergyText;
+    [SerializeField] TextMeshProUGUI maxEnergyText;
+    [SerializeField] Button[] abilityUIButtons;
 
     private PlayerMovement movement;
 
@@ -14,6 +20,9 @@ public class PlayerControls : MonoBehaviour
     private Dictionary<KeyCode, PlayerAction> buttonBindings;
     private float energyRechargeRate = 50;
 
+    Jump jump;
+    ClimbUp climbUp;
+    SeeInvisibility seeInvis;
 
     private void Awake()
     {
@@ -30,10 +39,87 @@ public class PlayerControls : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         maxEnergy = maxEnergyLimit;
 
+        abilityInventoryMenu = GameObject.Find("AbilityInventoryMenu");
+
+        abilityUIButtons = abilityInventoryMenu.GetComponentsInChildren<Button>();
+
+        currentEnergyText = GameObject.Find("BatteryCurrentNumber").GetComponent<TextMeshProUGUI>();
+        maxEnergyText = GameObject.Find("BatteryMaxNumber").GetComponent<TextMeshProUGUI>();
+
+
+        foreach (Button btn in abilityUIButtons)
+        {
+            btn.onClick.AddListener(() => onButtonClicked(btn.name));
+
+            if (btn.name == "ClimbUpEquip") btn.gameObject.SetActive(false);
+            if (btn.name == "SeeInvisEquip") btn.gameObject.SetActive(false);
+
+            if (btn.name == "JumpInventory") btn.gameObject.SetActive(false);
+            if (btn.name == "JumpEquip") btn.gameObject.SetActive(true);
+
+            if (btn.name == "NormalEyeInventory") btn.gameObject.SetActive(false);
+            if (btn.name == "NormalEyeEquip") btn.gameObject.SetActive(true);
+        }
+
         Walk right = new Walk();
+        Walk left = new Walk();
+        jump = new Jump();
+        climbUp = new ClimbUp();
+        seeInvis = new SeeInvisibility();
+
         right.isRight = true;
+
         changeButtonBinding(KeyCode.RightArrow, right);
-        //changeButtonBinding(KeyCode.LeftArrow, new Walk());
+        changeButtonBinding(KeyCode.LeftArrow, left);
+        changeButtonBinding(KeyCode.Z, jump);
+
+        maxEnergyText.text = ((int)maxEnergyLimit / 10).ToString();
+
+    }
+
+    void onButtonClicked(string buttonName)
+    {
+        switch (buttonName)
+        {
+            case "JumpInventory":
+                changeButtonBinding(KeyCode.Z, jump);
+                changeButtonBinding(KeyCode.UpArrow, null);
+                break;
+
+            case "JumpEquip":
+                changeButtonBinding(KeyCode.Z, null);
+                break;
+
+            case "ClimbUpInventory":
+                changeButtonBinding(KeyCode.UpArrow, climbUp);
+                changeButtonBinding(KeyCode.Z, null);
+                break;
+
+            case "ClimbUpEquip":
+                changeButtonBinding(KeyCode.UpArrow, null);
+                break;
+
+            case "NormalEyeInventory":
+                changeButtonBinding(KeyCode.I, null);
+                break;
+
+            case "NormalEyeEquip":
+                changeButtonBinding(KeyCode.I, null);
+                break;
+
+            case "SeeInvisInventory":
+                changeButtonBinding(KeyCode.I, seeInvis);
+                break;
+
+            case "SeeInvisEquip":
+                changeButtonBinding(KeyCode.I, null);
+                break;
+
+            default:
+                break;
+        }
+
+
     }
 
     public void enableButton(KeyCode button)
@@ -49,7 +135,16 @@ public class PlayerControls : MonoBehaviour
     public void changeButtonBinding(KeyCode button, PlayerAction action)
     {
         if (!buttonAvailability[button]) return;
+        
         if (buttonBindings.ContainsKey(button)) maxEnergy += buttonBindings[button].maxEnergyPenalty;
+        
+        if (action == null)
+        {
+            buttonBindings.Remove(button);
+
+            return;
+        }
+        
         buttonBindings[button] = action;
         maxEnergy -= action.maxEnergyPenalty;
         Debug.Log(maxEnergy);
@@ -110,6 +205,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Update()
     {
+        
         movement.purgeHorizontalVelocity();
         foreach(KeyCode button in buttonBindings.Keys)
         {
@@ -125,6 +221,8 @@ public class PlayerControls : MonoBehaviour
             }
         }
         currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.deltaTime * maxEnergy / maxEnergyLimit);
+
+        currentEnergyText.text = ((int)currentEnergy / 10).ToString();
     }
 
     public bool tryConsumeEnergy(float amount)
