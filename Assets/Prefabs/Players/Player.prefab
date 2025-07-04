@@ -108,15 +108,7 @@ MonoBehaviour:
   abilityInventoryMenu: {fileID: 0}
   currentEnergyText: {fileID: 0}
   maxEnergyText: {fileID: 0}
-  abilityUIButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  abilityUIButtons: []
 --- !u!114 &1839828944975238639
 MonoBehaviour:
   m_ObjectHideFlags: 0

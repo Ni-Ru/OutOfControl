@@ -39,7 +39,12 @@ public class PlayerControls : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         maxEnergy = maxEnergyLimit;
 
+        abilityInventoryMenu = GameObject.Find("AbilityInventoryMenu");
+
         abilityUIButtons = abilityInventoryMenu.GetComponentsInChildren<Button>();
+
+        currentEnergyText = GameObject.Find("BatteryCurrentNumber").GetComponent<TextMeshProUGUI>();
+        maxEnergyText = GameObject.Find("BatteryMaxNumber").GetComponent<TextMeshProUGUI>();
 
 
         foreach (Button btn in abilityUIButtons)
