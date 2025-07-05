@@ -24,6 +24,8 @@ public class PlayerControls : MonoBehaviour
     ClimbUp climbUp;
     SeeInvisibility seeInvis;
 
+    bool insideWorkbench = false;
+
     private void Awake()
     {
         buttonAvailability = new Dictionary<KeyCode, bool>();
@@ -74,6 +76,8 @@ public class PlayerControls : MonoBehaviour
         changeButtonBinding(KeyCode.Z, jump);
 
         maxEnergyText.text = ((int)maxEnergyLimit / 10).ToString();
+
+        abilityInventoryMenu.SetActive(false);
 
     }
 
@@ -152,11 +156,17 @@ public class PlayerControls : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        string nodeType = collision.gameObject.GetComponent<NodePickup>().GetNodeType();
+        
+        if (collision.gameObject.CompareTag("Workbench"))
+        {
+            insideWorkbench = true;
+        }
 
         if (collision.gameObject.CompareTag("NodePickup")) 
         {
-            if(nodeType == AbilityNodePickup.LEFT.ToString())
+            string nodeType = collision.gameObject.GetComponent<NodePickup>().GetNodeType();
+
+            if (nodeType == AbilityNodePickup.LEFT.ToString())
             {
                 Walk left = new Walk();
                 addAvailableAction(left);
@@ -203,6 +213,14 @@ public class PlayerControls : MonoBehaviour
         
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Workbench"))
+        {
+            insideWorkbench = false;
+        }
+    }
+
     private void Update()
     {
         
@@ -223,6 +241,20 @@ public class PlayerControls : MonoBehaviour
         currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.deltaTime * maxEnergy / maxEnergyLimit);
 
         currentEnergyText.text = ((int)currentEnergy / 10).ToString();
+
+        if (insideWorkbench && Input.GetKeyDown(KeyCode.E)) 
+        {
+            if (!abilityInventoryMenu.activeSelf)
+            {
+                abilityInventoryMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else 
+            { 
+                abilityInventoryMenu.SetActive(false);
+                Time.timeScale = 1;
+            }
+        }
     }
 
     public bool tryConsumeEnergy(float amount)
