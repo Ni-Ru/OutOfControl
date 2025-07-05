@@ -171,6 +171,8 @@ public class PlayerControls : MonoBehaviour
                 addAvailableAction(jump);
 
                 changeButtonBinding(KeyCode.Z, jump);
+                Debug.Log("Jump-Fähigkeit aktiviert. Taste Z zum Springen.");
+
             }
 
             if(nodeType == AbilityNodePickup.CLIMBUP.ToString()) 
@@ -211,6 +213,11 @@ public class PlayerControls : MonoBehaviour
             {
                 buttonBindings[button].execute(gameObject);
                 //Debug.Log(GetComponent<Rigidbody2D>().linearVelocityX);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                Debug.Log("Z-Taste wurde gedrückt!");
             }
         }
         currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.deltaTime * maxEnergy / maxEnergyLimit);
