@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 908932782}
   - component: {fileID: 908932781}
   - component: {fileID: 908932780}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +879,7 @@ GameObject:
   - component: {fileID: 1832457628}
   - component: {fileID: 1832457627}
   - component: {fileID: 1832457626}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,10 +1251,6 @@ PrefabInstance:
     - target: {fileID: 8929650628212492459, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
       propertyPath: m_Name
       value: AbilityInventoryMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 8929650628212492459, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,9 +9,10 @@ public class PlayerControls : MonoBehaviour
     public float maxEnergy { get; private set; }
     public float currentEnergy;
     [SerializeField] GameObject abilityInventoryMenu;
-    [SerializeField] TextMeshProUGUI currentEnergyText;
-    [SerializeField] TextMeshProUGUI maxEnergyText;
+    //[SerializeField] TextMeshProUGUI currentEnergyText;
+    //[SerializeField] TextMeshProUGUI maxEnergyText;
     [SerializeField] Button[] abilityUIButtons;
+    [SerializeField] GameObject[] batteryPips;
 
     private PlayerMovement movement;
 
@@ -19,6 +20,8 @@ public class PlayerControls : MonoBehaviour
     private List<PlayerAction> availableActions;
     private Dictionary<KeyCode, PlayerAction> buttonBindings;
     private float energyRechargeRate = 50;
+    private Color32 batteryUnusedColor = new Color32(0, 201, 255, 255);
+    private Color32 batteryUsedColor = new Color32(91, 91, 91, 255);
 
     Jump jump;
     ClimbUp climbUp;
@@ -45,8 +48,11 @@ public class PlayerControls : MonoBehaviour
 
         abilityUIButtons = abilityInventoryMenu.GetComponentsInChildren<Button>();
 
-        currentEnergyText = GameObject.Find("BatteryCurrentNumber").GetComponent<TextMeshProUGUI>();
-        maxEnergyText = GameObject.Find("BatteryMaxNumber").GetComponent<TextMeshProUGUI>();
+        batteryPips = GameObject.FindGameObjectsWithTag("BatteryPip");
+        System.Array.Reverse(batteryPips);
+
+        //currentEnergyText = GameObject.Find("BatteryCurrentNumber").GetComponent<TextMeshProUGUI>();
+        //maxEnergyText = GameObject.Find("BatteryMaxNumber").GetComponent<TextMeshProUGUI>();
 
 
         foreach (Button btn in abilityUIButtons)
@@ -63,6 +69,11 @@ public class PlayerControls : MonoBehaviour
             if (btn.name == "NormalEyeEquip") btn.gameObject.SetActive(true);
         }
 
+        foreach (var batteryPip in batteryPips)
+        {
+            batteryPip.GetComponent<Image>().color = batteryUnusedColor;
+        }
+
         Walk right = new Walk();
         Walk left = new Walk();
         jump = new Jump();
@@ -75,7 +86,7 @@ public class PlayerControls : MonoBehaviour
         changeButtonBinding(KeyCode.LeftArrow, left);
         changeButtonBinding(KeyCode.Z, jump);
 
-        maxEnergyText.text = ((int)maxEnergyLimit / 10).ToString();
+        //maxEnergyText.text = ((int)maxEnergyLimit / 10).ToString();
 
         abilityInventoryMenu.SetActive(false);
 
@@ -83,6 +94,7 @@ public class PlayerControls : MonoBehaviour
 
     void onButtonClicked(string buttonName)
     {
+        
         switch (buttonName)
         {
             case "JumpInventory":
@@ -151,6 +163,10 @@ public class PlayerControls : MonoBehaviour
         
         buttonBindings[button] = action;
         maxEnergy -= action.maxEnergyPenalty;
+
+        currentEnergy = Mathf.Min(currentEnergy, maxEnergy);
+        UpdateBatteryUI();
+
         Debug.Log(maxEnergy);
     }
 
@@ -221,6 +237,20 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    private void UpdateBatteryUI() 
+    {
+        int activePipCount = Mathf.FloorToInt(currentEnergy / 10f);
+
+        for (int i = 0; i < batteryPips.Length; i++)
+        {
+            Image pipImage = batteryPips[i].GetComponent<Image>();
+
+            if (pipImage == null) continue;
+
+            pipImage.color = (i < activePipCount) ? batteryUnusedColor : batteryUsedColor;
+        }
+    }
+
     private void Update()
     {
         
@@ -238,9 +268,12 @@ public class PlayerControls : MonoBehaviour
                 Debug.Log("Z-Taste wurde gedrückt!");
             }
         }
-        currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.deltaTime * maxEnergy / maxEnergyLimit);
 
-        currentEnergyText.text = ((int)currentEnergy / 10).ToString();
+        currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.unscaledDeltaTime * maxEnergy / maxEnergyLimit);
+
+        UpdateBatteryUI();
+        
+        //currentEnergyText.text = ((int)currentEnergy / 10).ToString();
 
         if (insideWorkbench && Input.GetKeyDown(KeyCode.E)) 
         {
@@ -248,6 +281,7 @@ public class PlayerControls : MonoBehaviour
             {
                 abilityInventoryMenu.SetActive(true);
                 Time.timeScale = 0;
+                UpdateBatteryUI();
             }
             else 
             { 
