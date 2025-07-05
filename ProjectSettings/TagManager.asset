@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NodePickup
   - Workbench
+  - BatteryPip
   layers:
   - Default
   - TransparentFX
