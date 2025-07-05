@@ -515,6 +515,7 @@ GameObject:
   - component: {fileID: 2480632448308402514}
   - component: {fileID: 8335189891991893272}
   - component: {fileID: 4819884627086711503}
+  - component: {fileID: 1002436223872495489}
   m_Layer: 5
   m_Name: JumpEquip
   m_TagString: Untagged
@@ -648,6 +649,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1002436223872495489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686792431118936278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Jump legs
+  slotPositions: 1
+  cost: 10
+  keyBindDescription: Y/Z
+  descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &1746759953568970822
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +814,7 @@ GameObject:
   - component: {fileID: 514035622681062904}
   - component: {fileID: 7222791616165835985}
   - component: {fileID: 7947257001285916414}
+  - component: {fileID: 4590742748957529785}
   m_Layer: 5
   m_Name: SeeInvisInventory
   m_TagString: Untagged
@@ -953,6 +972,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4590742748957529785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781064533469199934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Ocular part to see invisible objects.
+  slotPositions: 0
+  cost: 10
+  keyBindDescription: I
+  descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &1980612951297771049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1037,7 @@ GameObject:
   - component: {fileID: 1724720345406192781}
   - component: {fileID: 1564223534682426539}
   - component: {fileID: 724656497396817318}
+  - component: {fileID: 2230823066337410158}
   m_Layer: 5
   m_Name: SeeInvisEquip
   m_TagString: Untagged
@@ -1134,6 +1171,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &2230823066337410158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059746107688675637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Ocular part to see invisible objects.
+  slotPositions: 0
+  cost: 10
+  keyBindDescription: I
+  descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &3031947517799529382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,7 +1818,7 @@ GameObject:
   - component: {fileID: 6064029462202027809}
   - component: {fileID: 4404884583044314142}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DescriptionBoxText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1817,7 +1871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Description text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1844,8 +1898,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9.8
-  m_fontSizeBase: 9.8
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1947,6 +2001,7 @@ GameObject:
   - component: {fileID: 2770674060191792555}
   - component: {fileID: 1719286562933458036}
   - component: {fileID: 3406154143315481795}
+  - component: {fileID: 5915430669531887039}
   m_Layer: 5
   m_Name: ClimbUpInventory
   m_TagString: Untagged
@@ -2104,6 +2159,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5915430669531887039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170775995760619796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Climbing legs
+  slotPositions: 1
+  cost: 0
+  keyBindDescription: Up
+  descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &4631663348762455244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +2527,7 @@ GameObject:
   - component: {fileID: 5871605208204312237}
   - component: {fileID: 6012460253790520595}
   - component: {fileID: 7319498191963890266}
+  - component: {fileID: 894309870032227705}
   m_Layer: 5
   m_Name: ClimbUpEquip
   m_TagString: Untagged
@@ -2588,6 +2661,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &894309870032227705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570573279197169944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Climbing legs
+  slotPositions: 1
+  cost: 10
+  keyBindDescription: Up
+  descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &5660429905133662708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,6 +3385,7 @@ GameObject:
   - component: {fileID: 4673131705129543570}
   - component: {fileID: 5758149569039108119}
   - component: {fileID: 8685692886454640413}
+  - component: {fileID: 5842324523569944801}
   m_Layer: 5
   m_Name: JumpInventory
   m_TagString: Untagged
@@ -3452,6 +3543,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5842324523569944801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578489907180563954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Jump legs
+  slotPositions: 1
+  cost: 10
+  keyBindDescription: Y/Z
+  descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &7662179952938318539
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,6 +3856,7 @@ GameObject:
   - component: {fileID: 6514401706144706918}
   - component: {fileID: 2494290489178329945}
   - component: {fileID: 7706052798205199624}
+  - component: {fileID: 4024656568999527001}
   m_Layer: 5
   m_Name: NormalEyeEquip
   m_TagString: Untagged
@@ -3881,6 +3990,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &4024656568999527001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403750421581753360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Factory default ocular parts. Every UM Model comes pre-installed with
+    this part.
+  slotPositions: 0
+  cost: 0
+  keyBindDescription: 
+  descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &8441305725727806364
 GameObject:
   m_ObjectHideFlags: 0
@@ -4292,6 +4419,7 @@ GameObject:
   - component: {fileID: 1141350910287853642}
   - component: {fileID: 3039899040385583716}
   - component: {fileID: 1112672939420155752}
+  - component: {fileID: 2308079092223883070}
   m_Layer: 5
   m_Name: NormalEyeInventory
   m_TagString: Untagged
@@ -4449,3 +4577,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2308079092223883070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9093942497847509370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Factory default ocular parts. Every UM Model comes pre-installed with
+    this part.
+  slotPositions: 0
+  cost: 0
+  keyBindDescription: 
+  descriptionBoxTextUI: {fileID: 4404884583044314142}
