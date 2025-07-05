@@ -664,6 +664,7 @@ MonoBehaviour:
   description: Jump legs
   slotPositions: 1
   cost: 10
+  keyBindDescription: Y/Z
   descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &1746759953568970822
 GameObject:
@@ -986,6 +987,7 @@ MonoBehaviour:
   description: Ocular part to see invisible objects.
   slotPositions: 0
   cost: 10
+  keyBindDescription: I
   descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &1980612951297771049
 GameObject:
@@ -1184,6 +1186,7 @@ MonoBehaviour:
   description: Ocular part to see invisible objects.
   slotPositions: 0
   cost: 10
+  keyBindDescription: I
   descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &3031947517799529382
 GameObject:
@@ -2171,6 +2174,7 @@ MonoBehaviour:
   description: Climbing legs
   slotPositions: 1
   cost: 0
+  keyBindDescription: Up
   descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &4631663348762455244
 GameObject:
@@ -2672,6 +2676,7 @@ MonoBehaviour:
   description: Climbing legs
   slotPositions: 1
   cost: 10
+  keyBindDescription: Up
   descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &5660429905133662708
 GameObject:
@@ -3553,6 +3558,7 @@ MonoBehaviour:
   description: Jump legs
   slotPositions: 1
   cost: 10
+  keyBindDescription: Y/Z
   descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &7662179952938318539
 GameObject:
@@ -4000,6 +4006,7 @@ MonoBehaviour:
     this part.
   slotPositions: 0
   cost: 0
+  keyBindDescription: 
   descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &8441305725727806364
 GameObject:
@@ -4586,4 +4593,5 @@ MonoBehaviour:
     this part.
   slotPositions: 0
   cost: 0
+  keyBindDescription: 
   descriptionBoxTextUI: {fileID: 4404884583044314142}

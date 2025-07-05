@@ -7,6 +7,7 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler
     [SerializeField] string description;
     [SerializeField] AbilitySlotPositions slotPositions = new AbilitySlotPositions();
     [SerializeField] int cost;
+    [SerializeField] string keyBindDescription;
     [SerializeField] TextMeshProUGUI descriptionBoxTextUI;
 
     private void Awake()
@@ -20,6 +21,8 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler
         descriptionBoxTextUI.text = description + "\n" +
                                     "\n" +
                                     "Slot position: " + slotPositions + " Slot" +"\n" +
+                                    "\n" +
+                                    "Keybind: " + keyBindDescription + "\n" +
                                     "\n" +
                                     "Energy cost: " + cost;
     }
