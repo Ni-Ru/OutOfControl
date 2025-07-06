@@ -59,14 +59,14 @@ public class PlayerControls : MonoBehaviour
         {
             btn.onClick.AddListener(() => onButtonClicked(btn.name));
 
-            if (btn.name == "ClimbUpEquip") btn.gameObject.SetActive(false);
-            if (btn.name == "SeeInvisEquip") btn.gameObject.SetActive(false);
+            if (btn.name == "ClimbUpEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
+            if (btn.name == "SeeInvisEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
 
-            if (btn.name == "JumpInventory") btn.gameObject.SetActive(false);
-            if (btn.name == "JumpEquip") btn.gameObject.SetActive(true);
+            if (btn.name == "JumpInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
+            if (btn.name == "JumpEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
 
-            if (btn.name == "NormalEyeInventory") btn.gameObject.SetActive(false);
-            if (btn.name == "NormalEyeEquip") btn.gameObject.SetActive(true);
+            if (btn.name == "NormalEyeInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
+            if (btn.name == "NormalEyeEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
         }
 
         foreach (var batteryPip in batteryPips)
