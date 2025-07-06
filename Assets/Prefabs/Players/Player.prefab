@@ -124,7 +124,7 @@ MonoBehaviour:
   climbingLayer:
     serializedVersion: 2
     m_Bits: 256
-  wallCollisionRadius: 0.25
+  wallCollisionRadius: 0.55
   groundCollisionRadius: 0.25
   rightOffset: {x: 0.57, y: 0.5}
   leftOffset: {x: -0.565, y: 0.5}
