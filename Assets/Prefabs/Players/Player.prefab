@@ -104,11 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b75fa28c073ca49b75886e5133d985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnergy: 0
-  abilityInventoryMenu: {fileID: 0}
-  currentEnergyText: {fileID: 0}
-  maxEnergyText: {fileID: 0}
-  abilityUIButtons: []
 --- !u!114 &1839828944975238639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,9 +120,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  climbingLayer:
-    serializedVersion: 2
-    m_Bits: 256
   wallCollisionRadius: 0.25
   groundCollisionRadius: 0.25
   rightOffset: {x: 0.57, y: 0.5}
@@ -139,12 +131,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4597496601283181436}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 373700a06bff17c4a9b4d7f3bf00ea88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBombSpawned: 0
   bomb: {fileID: 5810253725017070897, guid: f1b974c8cdc87eb4e9f797a963396b6e, type: 3}
   laserSword: {fileID: 2466445154335541026, guid: a17a937d0fe46f5478796fe61ddb8421, type: 3}
 --- !u!61 &7190896777270536783
