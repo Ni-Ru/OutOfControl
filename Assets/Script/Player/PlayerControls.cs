@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
@@ -39,6 +40,9 @@ public class PlayerControls : MonoBehaviour
         buttonAvailability.Add(KeyCode.Z, true); // Y in german keyboard
         buttonAvailability.Add(KeyCode.X, true);
         buttonAvailability.Add(KeyCode.I, true);
+        buttonAvailability.Add(KeyCode.Joystick1Button0, true); // A
+        buttonAvailability.Add(KeyCode.Joystick1Button2, true); // X
+        buttonAvailability.Add(KeyCode.Joystick1Button3, true); // Y
         availableActions = new List<PlayerAction>();
         buttonBindings = new Dictionary<KeyCode, PlayerAction>();
         movement = GetComponent<PlayerMovement>();
@@ -84,7 +88,10 @@ public class PlayerControls : MonoBehaviour
 
         changeButtonBinding(KeyCode.RightArrow, right);
         changeButtonBinding(KeyCode.LeftArrow, left);
+
         changeButtonBinding(KeyCode.Z, jump);
+        changeButtonBinding(KeyCode.Joystick1Button2, jump);
+
 
         //maxEnergyText.text = ((int)maxEnergyLimit / 10).ToString();
 
@@ -99,16 +106,19 @@ public class PlayerControls : MonoBehaviour
         {
             case "JumpInventory":
                 changeButtonBinding(KeyCode.Z, jump);
+                changeButtonBinding(KeyCode.Joystick1Button2, jump);
                 changeButtonBinding(KeyCode.UpArrow, null);
                 break;
 
             case "JumpEquip":
                 changeButtonBinding(KeyCode.Z, null);
+                changeButtonBinding(KeyCode.Joystick1Button2, null);
                 break;
 
             case "ClimbUpInventory":
                 changeButtonBinding(KeyCode.UpArrow, climbUp);
                 changeButtonBinding(KeyCode.Z, null);
+                changeButtonBinding(KeyCode.Joystick1Button2, null);
                 break;
 
             case "ClimbUpEquip":
@@ -117,18 +127,22 @@ public class PlayerControls : MonoBehaviour
 
             case "NormalEyeInventory":
                 changeButtonBinding(KeyCode.I, null);
+                changeButtonBinding(KeyCode.Joystick1Button3, null);
                 break;
 
             case "NormalEyeEquip":
                 changeButtonBinding(KeyCode.I, null);
+                changeButtonBinding(KeyCode.Joystick1Button3, null);
                 break;
 
             case "SeeInvisInventory":
                 changeButtonBinding(KeyCode.I, seeInvis);
+                changeButtonBinding(KeyCode.Joystick1Button3, seeInvis);
                 break;
 
             case "SeeInvisEquip":
                 changeButtonBinding(KeyCode.I, null);
+                changeButtonBinding(KeyCode.Joystick1Button3, null);
                 break;
 
             default:
@@ -269,13 +283,34 @@ public class PlayerControls : MonoBehaviour
             }
         }
 
+        if (Gamepad.current != null)
+        {
+            Vector2 dpadValue = Gamepad.current.dpad.ReadValue();
+
+            if (dpadValue.x > 0.5f)
+            {
+                buttonBindings[KeyCode.RightArrow]?.execute(gameObject);
+            }
+            else if (dpadValue.x < -0.5f)
+            {
+                buttonBindings[KeyCode.LeftArrow]?.execute(gameObject);
+            }
+
+            if(buttonBindings.TryGetValue(KeyCode.UpArrow, out var upAction) && dpadValue.y > 0.5f) 
+            {
+                //buttonBindings[KeyCode.UpArrow]?.execute(gameObject);
+                upAction.execute(gameObject);
+
+            }
+        }
+
         currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.unscaledDeltaTime * maxEnergy / maxEnergyLimit);
 
         UpdateBatteryUI();
         
         //currentEnergyText.text = ((int)currentEnergy / 10).ToString();
 
-        if (insideWorkbench && Input.GetKeyDown(KeyCode.E)) 
+        if (insideWorkbench && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button1))) 
         {
             if (!abilityInventoryMenu.activeSelf)
             {
