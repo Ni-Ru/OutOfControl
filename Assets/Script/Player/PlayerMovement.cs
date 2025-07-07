@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void addJump(float speed)
     {
-        if (isGrounded || isTouchingWall) 
+      //  if (isGrounded || isTouchingWall) 
+      if (isGrounded)
         {
             rigid.linearVelocityY = speed;
 
