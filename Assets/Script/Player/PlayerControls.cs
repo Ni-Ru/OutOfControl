@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] GameObject abilityInventoryMenu;
     //[SerializeField] TextMeshProUGUI currentEnergyText;
     //[SerializeField] TextMeshProUGUI maxEnergyText;
+
     [SerializeField] Button[] abilityUIButtons;
     [SerializeField] GameObject[] batteryPips;
 
