@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 groundOffset;
 
     [SerializeField] LayerMask groundLayer;
-    [SerializeField] LayerMask climbingLayer;
 
     bool isTouchingWall = false;
     [SerializeField] float wallCollisionRadius;
@@ -32,11 +31,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void addJump(float speed)
     {
-      //  if (isGrounded || isTouchingWall) 
-      if (isGrounded)
+        if (isGrounded) 
         {
             rigid.linearVelocityY = speed;
-
         }
         
     }
@@ -59,10 +56,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + groundOffset, groundCollisionRadius, groundLayer);
 
-        isTouchingWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, wallCollisionRadius, climbingLayer) ||
-                         Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, wallCollisionRadius, climbingLayer);
-            
-       
+        isTouchingWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, wallCollisionRadius, groundLayer) ||
+                         Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, wallCollisionRadius, groundLayer);
     }
 
     private void OnDrawGizmos()

@@ -8,6 +8,7 @@ public class PlayerControls : MonoBehaviour
     public float currentEnergy;
 
     private PlayerMovement movement;
+    private PlayerSprite playerSprite;
 
     private Dictionary<KeyCode, bool> buttonAvailability;
     private List<PlayerAction> availableActions;
@@ -32,6 +33,7 @@ public class PlayerControls : MonoBehaviour
 
         Walk right = new Walk();
         right.isRight = true;
+        playerSprite = GetComponent<PlayerSprite>();
         changeButtonBinding(KeyCode.RightArrow, right);
         //changeButtonBinding(KeyCode.LeftArrow, new Walk());
     }
@@ -53,6 +55,7 @@ public class PlayerControls : MonoBehaviour
         buttonBindings[button] = action;
         maxEnergy -= action.maxEnergyPenalty;
         Debug.Log(maxEnergy);
+        //playerSprite.adjustBodyParts(buttonBindings);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,8 +79,6 @@ public class PlayerControls : MonoBehaviour
                 addAvailableAction(jump);
 
                 changeButtonBinding(KeyCode.Z, jump);
-                Debug.Log("Jump-Fähigkeit aktiviert. Taste Z zum Springen.");
-
             }
 
             if(nodeType == AbilityNodePickup.CLIMBUP.ToString()) 
@@ -117,11 +118,6 @@ public class PlayerControls : MonoBehaviour
             {
                 buttonBindings[button].execute(gameObject);
                 //Debug.Log(GetComponent<Rigidbody2D>().linearVelocityX);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                Debug.Log("Z-Taste wurde gedrückt!");
             }
         }
         currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.deltaTime * maxEnergy / maxEnergyLimit);
