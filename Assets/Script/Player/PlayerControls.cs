@@ -6,6 +6,12 @@ public class PlayerControls : MonoBehaviour
     public static float maxEnergyLimit = 100;
     public float maxEnergy { get; private set; }
     public float currentEnergy;
+    [SerializeField] GameObject abilityInventoryMenu;
+    //[SerializeField] TextMeshProUGUI currentEnergyText;
+    //[SerializeField] TextMeshProUGUI maxEnergyText;
+
+    [SerializeField] Button[] abilityUIButtons;
+    [SerializeField] GameObject[] batteryPips;
 
     private PlayerMovement movement;
     private PlayerSprite playerSprite;
