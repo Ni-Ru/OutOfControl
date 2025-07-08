@@ -85,7 +85,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -99,7 +99,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,7 +123,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -534,7 +534,24 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      uv-player-sprite-sheet_0: 932482488369429120
+      uv-player-sprite-sheet_1: -8545495316549807072
+      uv-player-sprite-sheet_10: -8389347112056000098
+      uv-player-sprite-sheet_11: -5589104445901214880
+      uv-player-sprite-sheet_12: -5683313126953989789
+      uv-player-sprite-sheet_13: -6946192414817727227
+      uv-player-sprite-sheet_14: -806591055174759342
+      uv-player-sprite-sheet_15: 2512549486410224230
+      uv-player-sprite-sheet_16: -8706468604747483176
+      uv-player-sprite-sheet_2: 8256300692734320821
+      uv-player-sprite-sheet_3: 6999524008328768686
+      uv-player-sprite-sheet_4: -5334467431336190485
+      uv-player-sprite-sheet_5: 1046638160788337659
+      uv-player-sprite-sheet_6: 7027061484825730863
+      uv-player-sprite-sheet_7: 1054031955505408060
+      uv-player-sprite-sheet_8: 4650946984072197596
+      uv-player-sprite-sheet_9: 6826021617079590338
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
