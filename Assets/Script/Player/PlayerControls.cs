@@ -85,6 +85,7 @@ public class PlayerControls : MonoBehaviour
         seeInvis = new SeeInvisibility();
 
         right.isRight = true;
+        playerSprite = GetComponent<PlayerSprite>();
 
         changeButtonBinding(KeyCode.RightArrow, right);
         changeButtonBinding(KeyCode.LeftArrow, left);
@@ -93,10 +94,6 @@ public class PlayerControls : MonoBehaviour
         changeButtonBinding(KeyCode.Joystick1Button2, jump);
 
         abilityInventoryMenu.SetActive(false);
-
-        playerSprite = GetComponent<PlayerSprite>();
-        changeButtonBinding(KeyCode.RightArrow, right);
-        //changeButtonBinding(KeyCode.LeftArrow, new Walk());
     }
 
     private void onButtonClicked(string buttonName)
@@ -166,7 +163,8 @@ public class PlayerControls : MonoBehaviour
         if (action == null)
         {
             buttonBindings.Remove(button);
-
+            UpdateBatteryUI();
+            playerSprite.adjustBodyParts(buttonBindings);
             return;
         }
         buttonBindings[button] = action;
@@ -177,7 +175,7 @@ public class PlayerControls : MonoBehaviour
         UpdateBatteryUI();
 
         Debug.Log(maxEnergy);
-        //playerSprite.adjustBodyParts(buttonBindings);
+        playerSprite.adjustBodyParts(buttonBindings);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
