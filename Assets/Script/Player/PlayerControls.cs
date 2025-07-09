@@ -236,7 +236,7 @@ public class PlayerControls : MonoBehaviour
                 }
                 if (nodeType == AbilityNodePickup.SEE_INVIS.ToString() && btn.name == "SeeInvisInventory")
                 {
-                    SeeInvisibility seeInvis = new SeeInvisibility(globalVolume,normalVisionProfile,ultravioletVisionProfile);
+                    seeInvis = new SeeInvisibility(globalVolume,normalVisionProfile,ultravioletVisionProfile);
                     addAvailableAction(seeInvis);
                     //changeButtonBinding(KeyCode.I, seeInvis);
                     //changeButtonBinding(KeyCode.Joystick1Button3, seeInvis);
