@@ -313,7 +313,6 @@ MonoBehaviour:
   rightOffset: {x: 0.57, y: 0.5}
   leftOffset: {x: -0.565, y: 0.5}
   animator: {fileID: 5636340084162058772}
-  ren: {fileID: 2457825968670209450}
 --- !u!114 &7802244308538447342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +417,8 @@ MonoBehaviour:
   playerSprite: {fileID: 2457825968670209450}
   jumpingLegsSprite: {fileID: 9015953041067465187, guid: 414df43941ff6b8458e7c1d4f56ef9e9, type: 3}
   noLegsSprite: {fileID: 5706379121428410906, guid: 414df43941ff6b8458e7c1d4f56ef9e9, type: 3}
+  jumpingLegsSpriteEyes: {fileID: -806591055174759342, guid: 0431ea00190520440a9ca1da59ad71cc, type: 3}
+  noLegsSpriteEyes: {fileID: -5334467431336190485, guid: 0431ea00190520440a9ca1da59ad71cc, type: 3}
   animator: {fileID: 5636340084162058772}
 --- !u!1 &5623191841335813572
 GameObject:

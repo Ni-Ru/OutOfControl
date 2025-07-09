@@ -9,6 +9,8 @@ public class PlayerSprite : MonoBehaviour
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private Sprite jumpingLegsSprite;
     [SerializeField] private Sprite noLegsSprite;
+    [SerializeField] private Sprite jumpingLegsSpriteEyes;
+    [SerializeField] private Sprite noLegsSpriteEyes;
     [SerializeField] private Animator animator;
     /*
     [SerializeField] private SpriteRenderer legSprite;
@@ -37,15 +39,17 @@ public class PlayerSprite : MonoBehaviour
     public void adjustBodyParts(Dictionary<KeyCode, PlayerAction> equippedActions)
     {
         animator.enabled = false;
+        bool hasEyes = equippedActions.ContainsKey(KeyCode.I);
+        animator.SetBool("hasEyes", hasEyes);
         if (equippedActions.Keys.Contains(KeyCode.Z))
         {
-            playerSprite.sprite = jumpingLegsSprite;
+            playerSprite.sprite = hasEyes? jumpingLegsSpriteEyes: jumpingLegsSprite;
             animator.SetBool("hasJumpingLegs", true);
             playerCollider.offset = new Vector2(0, tallHitbox.x);
             playerCollider.size = new Vector2(playerCollider.size.x, tallHitbox.y);
         } else
         {
-            playerSprite.sprite = noLegsSprite;
+            playerSprite.sprite = hasEyes? noLegsSpriteEyes : noLegsSprite;
             animator.SetBool("hasJumpingLegs", false);
             playerCollider.offset = new Vector2(0, shortHitbox.x);
             playerCollider.size = new Vector2(playerCollider.size.x, shortHitbox.y);
