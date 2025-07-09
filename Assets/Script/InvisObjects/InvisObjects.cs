@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps; // Required for TilemapRenderer
 
 public class InvisObjects : MonoBehaviour
 {
     public static InvisObjects instance;
-    [SerializeField] private List<SpriteRenderer> invisibleObjects;
+
+    [SerializeField] private List<TilemapRenderer> invisibleObjects;
 
     private void Awake()
     {
@@ -13,6 +15,9 @@ public class InvisObjects : MonoBehaviour
 
     public void setObjectVisibility(bool visible)
     {
-        foreach (SpriteRenderer g in invisibleObjects) g.enabled = visible;
+        foreach (TilemapRenderer t in invisibleObjects)
+        {
+            t.enabled = visible;
+        }
     }
 }
