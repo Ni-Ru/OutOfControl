@@ -75,8 +75,7 @@ public class PlayerControls : MonoBehaviour
             if (btn.name == "ClimbUpInventory") btn.interactable = false;
 
             if (btn.name == "JumpInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
-
-            if (btn.name == "JumpEquip") btn.interactable = false; //btn.gameObject.SetActive(true);
+            //if (btn.name == "JumpEquip") btn.interactable = false; //btn.gameObject.SetActive(true);
 
             if (btn.name == "NormalEyeInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
             if (btn.name == "NormalEyeEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
@@ -89,7 +88,7 @@ public class PlayerControls : MonoBehaviour
 
         Walk right = new Walk();
         Walk left = new Walk();
-        //jump = new Jump();
+        jump = new Jump();
         //climbUp = new ClimbUp();
         //seeInvis = new SeeInvisibility();
 
@@ -99,8 +98,8 @@ public class PlayerControls : MonoBehaviour
         changeButtonBinding(KeyCode.RightArrow, right);
         changeButtonBinding(KeyCode.LeftArrow, left);
 
-        //changeButtonBinding(KeyCode.Z, jump);
-        //changeButtonBinding(KeyCode.Joystick1Button2, jump);
+        changeButtonBinding(KeyCode.Z, jump);
+        changeButtonBinding(KeyCode.Joystick1Button2, jump);
 
         abilityInventoryMenu.SetActive(false);
     }

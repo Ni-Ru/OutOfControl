@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1479986126}
+  m_FirstSelected: {fileID: 1529820692}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &134400000
@@ -425,18 +425,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1839828944975238639, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
-      propertyPath: wallCollisionRadius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1839828944975238639, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
-      propertyPath: groundCollisionRadius
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1839828944975238639, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
-      propertyPath: climbingWallLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
+    - target: {fileID: 1077120342626538400, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
+      propertyPath: globalVolume
+      value: 
+      objectReference: {fileID: 1467184305}
     - target: {fileID: 1952892042214446525, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -480,10 +472,6 @@ PrefabInstance:
     - target: {fileID: 4597496601283181436, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4597496601283181436, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -581,6 +569,10 @@ PrefabInstance:
     - target: {fileID: 7437226065174226814, guid: 4a834457ad32c904baeb48ea22191320, type: 3}
       propertyPath: m_Name
       value: LeftAbilityPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437226065174226814, guid: 4a834457ad32c904baeb48ea22191320, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -93108,14 +93100,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpAbilityPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 7437226065174226814, guid: 22823e682f129ac41b8b661523d5b1ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22823e682f129ac41b8b661523d5b1ca, type: 3}
---- !u!1 &1479986126 stripped
+--- !u!114 &1467184305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7515020904950476226, guid: 26926ecd4ae4f904eb9320abe70d8eca, type: 3}
+  m_PrefabInstance: {fileID: 1309371913}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1529820692 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1781064533469199934, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8403750421581753360, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
   m_PrefabInstance: {fileID: 503829541}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1689188989
