@@ -542,6 +542,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1719286562933458036, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719286562933458036, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8127290747222156748, guid: a15809d96b50903498601ec4f76f378d, type: 3}
+    - target: {fileID: 3406154143315481795, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406154143315481795, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406154143315481795, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012460253790520595, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012460253790520595, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8127290747222156748, guid: a15809d96b50903498601ec4f76f378d, type: 3}
+    - target: {fileID: 7319498191963890266, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319498191963890266, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319498191963890266, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8929650628212492459, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
       propertyPath: m_Name
       value: AbilityInventoryMenu
