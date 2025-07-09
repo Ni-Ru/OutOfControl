@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
 {
+    [SerializeField] private Volume globalVolume;
+    [SerializeField] private VolumeProfile normalVisionProfile;
+    [SerializeField] private VolumeProfile ultravioletVisionProfile;
+    
     public static float maxEnergyLimit = 100;
     public float maxEnergy { get; private set; }
     public float currentEnergy;
@@ -82,7 +87,7 @@ public class PlayerControls : MonoBehaviour
         Walk left = new Walk();
         jump = new Jump();
         climbUp = new ClimbUp();
-        seeInvis = new SeeInvisibility();
+        seeInvis = new SeeInvisibility(globalVolume, normalVisionProfile, ultravioletVisionProfile);
 
         right.isRight = true;
         playerSprite = GetComponent<PlayerSprite>();
@@ -224,7 +229,7 @@ public class PlayerControls : MonoBehaviour
             }
             if(nodeType == AbilityNodePickup.SEE_INVIS.ToString())
             {
-                SeeInvisibility seeInvis = new SeeInvisibility();
+                SeeInvisibility seeInvis = new SeeInvisibility(globalVolume, normalVisionProfile, ultravioletVisionProfile);
                 addAvailableAction(seeInvis);
                 changeButtonBinding(KeyCode.I, seeInvis);
             }
