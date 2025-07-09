@@ -285,6 +285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b75fa28c073ca49b75886e5133d985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalVolume: {fileID: 0}
+  normalVisionProfile: {fileID: 11400000, guid: 4c9a3161e34174e47b739c6ebe4a8717, type: 2}
+  ultravioletVisionProfile: {fileID: 11400000, guid: ca64687e69c624741a66256b43feee95, type: 2}
   currentEnergy: 0
   abilityInventoryMenu: {fileID: 0}
   abilityUIButtons: []
@@ -307,9 +310,9 @@ MonoBehaviour:
     m_Bits: 64
   climbingWallLayer:
     serializedVersion: 2
-    m_Bits: 0
-  wallCollisionRadius: 0.25
-  groundCollisionRadius: 0.25
+    m_Bits: 256
+  wallCollisionRadius: 0.5
+  groundCollisionRadius: 2
   rightOffset: {x: 0.57, y: 0.5}
   leftOffset: {x: -0.565, y: 0.5}
   animator: {fileID: 5636340084162058772}
