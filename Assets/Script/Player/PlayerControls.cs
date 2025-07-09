@@ -219,12 +219,13 @@ public class PlayerControls : MonoBehaviour
                     btn.interactable = true;
                 }
 
-                if (nodeType == AbilityNodePickup.CLIMBUP.ToString() && btn.name == "ClimbUpEquip")
+                if (nodeType == AbilityNodePickup.CLIMBUP.ToString() && btn.name == "ClimbUpInventory")
                 {
                     ClimbUp climbUp = new ClimbUp();
                     addAvailableAction(climbUp);
 
                     //changeButtonBinding(KeyCode.UpArrow, climbUp);
+                    btn.interactable = true;
                 }
 
                 if (nodeType == AbilityNodePickup.BOMB.ToString())
