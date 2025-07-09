@@ -872,8 +872,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -140188652168275977, guid: ef2e58b2e1a12428d8d06c84f3e90800, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -903,10 +903,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 1, b: 0.10190296, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.98039216, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -962,12 +962,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Jump legs
+  description: jumping legs
   slotPositions: 1
-  cost: 10
-  keyBindDescription: Y/Z
+  cost: 20
+  keyBindDescription: Y/Z (Keyboard) / X (Controller)
   descriptionBoxTextUI: {fileID: 0}
-  fallbackButton: {fileID: 0}
 --- !u!1 &1746759953568970822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,8 +1171,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -6141819732904542811, guid: 28cdcf0f5b9fd354dac7f53abec0312e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1203,10 +1202,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.9440975, g: 0.02352941, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.98039216, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1286,12 +1285,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Ocular part to see invisible objects.
+  description: see invisible object
   slotPositions: 0
-  cost: 10
-  keyBindDescription: I
+  cost: 20
+  keyBindDescription: I (Keyboard) / Y (Controller)
   descriptionBoxTextUI: {fileID: 0}
-  fallbackButton: {fileID: 0}
 --- !u!1 &1980612951297771049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,8 +1394,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -6141819732904542811, guid: 28cdcf0f5b9fd354dac7f53abec0312e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1427,10 +1425,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.94509804, g: 0.023529412, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.98039216, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1486,12 +1484,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Ocular part to see invisible objects.
+  description: see invisible objects
   slotPositions: 0
-  cost: 10
-  keyBindDescription: I
+  cost: 20
+  keyBindDescription: I (Keyboard) / Y (Controller)
   descriptionBoxTextUI: {fileID: 0}
-  fallbackButton: {fileID: 0}
 --- !u!1 &3031947517799529382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,8 +2433,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -8127290747222156748, guid: a15809d96b50903498601ec4f76f378d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2467,10 +2464,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0, b: 0.027672768, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.98039216, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2550,12 +2547,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Climbing legs
+  description: climbing legs
   slotPositions: 1
   cost: 10
   keyBindDescription: Up
   descriptionBoxTextUI: {fileID: 0}
-  fallbackButton: {fileID: 0}
 --- !u!1 &4631663348762455244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,8 +3075,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -8127290747222156748, guid: a15809d96b50903498601ec4f76f378d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3110,10 +3106,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0, b: 0.02745098, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.98039216, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3169,12 +3165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Climbing legs
+  description: climbing legs
   slotPositions: 1
   cost: 10
   keyBindDescription: Up
   descriptionBoxTextUI: {fileID: 0}
-  fallbackButton: {fileID: 0}
 --- !u!1 &5660429905133662708
 GameObject:
   m_ObjectHideFlags: 0
@@ -4208,8 +4203,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -140188652168275977, guid: ef2e58b2e1a12428d8d06c84f3e90800, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4239,10 +4234,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 1, b: 0.10190296, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.98039216, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4322,12 +4317,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Jump legs
+  description: jump legs
   slotPositions: 1
-  cost: 10
-  keyBindDescription: Y/Z
+  cost: 20
+  keyBindDescription: Y/Z (Keyboard) / X (Controller)
   descriptionBoxTextUI: {fileID: 0}
-  fallbackButton: {fileID: 0}
 --- !u!1 &7662179952938318539
 GameObject:
   m_ObjectHideFlags: 0
@@ -4680,8 +4674,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 6943535168657398750, guid: cb3d8a663dcf6474ab8b0158faf03cff, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4711,10 +4705,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.023584902, g: 0.43561524, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.98039216, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4770,13 +4764,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Factory default ocular parts. Every UM Model comes pre-installed with
-    this part.
+  description: normal eye
   slotPositions: 0
   cost: 0
   keyBindDescription: 
   descriptionBoxTextUI: {fileID: 0}
-  fallbackButton: {fileID: 0}
 --- !u!1 &8441305725727806364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5164,7 +5156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2185472608353246101, guid: f5d681611ed05e34ba223203b255d89e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5d681611ed05e34ba223203b255d89e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5314,8 +5306,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 6943535168657398750, guid: cb3d8a663dcf6474ab8b0158faf03cff, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5345,10 +5337,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.023584902, g: 0.43561524, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.98039216, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5428,10 +5420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a786e1023ae2ecb43bddff52e7470919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Factory default ocular parts. Every UM Model comes pre-installed with
-    this part.
+  description: normal eye
   slotPositions: 0
   cost: 0
-  keyBindDescription: 
-  descriptionBoxTextUI: {fileID: 4404884583044314142}
-  fallbackButton: {fileID: 0}
+  keyBindDescription: none
+  descriptionBoxTextUI: {fileID: 0}

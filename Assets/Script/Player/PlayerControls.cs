@@ -1,21 +1,29 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
 {
+    [SerializeField] private Volume globalVolume;
+    [SerializeField] private VolumeProfile normalVisionProfile;
+    [SerializeField] private VolumeProfile ultravioletVisionProfile;
+    
     public static float maxEnergyLimit = 100;
     public float maxEnergy { get; private set; }
     public float currentEnergy;
     [SerializeField] GameObject abilityInventoryMenu;
     //[SerializeField] TextMeshProUGUI currentEnergyText;
     //[SerializeField] TextMeshProUGUI maxEnergyText;
+
     [SerializeField] Button[] abilityUIButtons;
     [SerializeField] GameObject[] batteryPips;
 
     private PlayerMovement movement;
+    private PlayerSprite playerSprite;
 
     private Dictionary<KeyCode, bool> buttonAvailability;
     private List<PlayerAction> availableActions;
@@ -29,6 +37,7 @@ public class PlayerControls : MonoBehaviour
     SeeInvisibility seeInvis;
 
     bool insideWorkbench = false;
+
 
     private void Awake()
     {
@@ -55,10 +64,6 @@ public class PlayerControls : MonoBehaviour
         batteryPips = GameObject.FindGameObjectsWithTag("BatteryPip");
         System.Array.Reverse(batteryPips);
 
-        //currentEnergyText = GameObject.Find("BatteryCurrentNumber").GetComponent<TextMeshProUGUI>();
-        //maxEnergyText = GameObject.Find("BatteryMaxNumber").GetComponent<TextMeshProUGUI>();
-
-
         foreach (Button btn in abilityUIButtons)
         {
             btn.onClick.AddListener(() => onButtonClicked(btn.name));
@@ -66,8 +71,11 @@ public class PlayerControls : MonoBehaviour
             if (btn.name == "ClimbUpEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
             if (btn.name == "SeeInvisEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
 
+            if (btn.name == "SeeInvisInventory") btn.interactable = false;
+            if (btn.name == "ClimbUpInventory") btn.interactable = false;
+
             if (btn.name == "JumpInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
-            if (btn.name == "JumpEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
+            //if (btn.name == "JumpEquip") btn.interactable = false; //btn.gameObject.SetActive(true);
 
             if (btn.name == "NormalEyeInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
             if (btn.name == "NormalEyeEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
@@ -81,10 +89,11 @@ public class PlayerControls : MonoBehaviour
         Walk right = new Walk();
         Walk left = new Walk();
         jump = new Jump();
-        climbUp = new ClimbUp();
-        seeInvis = new SeeInvisibility();
+        //climbUp = new ClimbUp();
+        //seeInvis = new SeeInvisibility();
 
         right.isRight = true;
+        playerSprite = GetComponent<PlayerSprite>();
 
         changeButtonBinding(KeyCode.RightArrow, right);
         changeButtonBinding(KeyCode.LeftArrow, left);
@@ -92,16 +101,11 @@ public class PlayerControls : MonoBehaviour
         changeButtonBinding(KeyCode.Z, jump);
         changeButtonBinding(KeyCode.Joystick1Button2, jump);
 
-
-        //maxEnergyText.text = ((int)maxEnergyLimit / 10).ToString();
-
         abilityInventoryMenu.SetActive(false);
-
     }
 
-    void onButtonClicked(string buttonName)
+    private void onButtonClicked(string buttonName)
     {
-        
         switch (buttonName)
         {
             case "JumpInventory":
@@ -148,8 +152,6 @@ public class PlayerControls : MonoBehaviour
             default:
                 break;
         }
-
-
     }
 
     public void enableButton(KeyCode button)
@@ -165,28 +167,28 @@ public class PlayerControls : MonoBehaviour
     public void changeButtonBinding(KeyCode button, PlayerAction action)
     {
         if (!buttonAvailability[button]) return;
-        
         if (buttonBindings.ContainsKey(button)) maxEnergy += buttonBindings[button].maxEnergyPenalty;
-        
         if (action == null)
         {
             buttonBindings.Remove(button);
-
+            UpdateBatteryUI();
+            playerSprite.adjustBodyParts(buttonBindings);
             return;
         }
-        
         buttonBindings[button] = action;
         maxEnergy -= action.maxEnergyPenalty;
 
-        currentEnergy = Mathf.Min(currentEnergy, maxEnergy);
+        //currentEnergy = Mathf.Min(currentEnergy, maxEnergy);
+
         UpdateBatteryUI();
 
         Debug.Log(maxEnergy);
+        playerSprite.adjustBodyParts(buttonBindings);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.gameObject.CompareTag("Workbench"))
         {
             insideWorkbench = true;
@@ -196,6 +198,53 @@ public class PlayerControls : MonoBehaviour
         {
             string nodeType = collision.gameObject.GetComponent<NodePickup>().GetNodeType();
 
+            foreach (Button btn in abilityUIButtons)
+            {
+                if (nodeType == AbilityNodePickup.LEFT.ToString())
+                {
+                    Walk left = new Walk();
+                    addAvailableAction(left);
+
+                    changeButtonBinding(KeyCode.LeftArrow, left);
+
+                }
+
+                if (nodeType == AbilityNodePickup.JUMP.ToString() && (btn.name == "JumpInventory"))
+                {
+                    Jump jump = new Jump();
+                    addAvailableAction(jump);
+
+                    //changeButtonBinding(KeyCode.Z, jump);
+                    //changeButtonBinding(KeyCode.Joystick1Button2, jump);
+                    btn.interactable = true;
+                }
+
+                if (nodeType == AbilityNodePickup.CLIMBUP.ToString() && btn.name == "ClimbUpEquip")
+                {
+                    ClimbUp climbUp = new ClimbUp();
+                    addAvailableAction(climbUp);
+
+                    //changeButtonBinding(KeyCode.UpArrow, climbUp);
+                }
+
+                if (nodeType == AbilityNodePickup.BOMB.ToString())
+                {
+                    SpawnBomb spawnBomb = new SpawnBomb();
+                    addAvailableAction(spawnBomb);
+
+                    //changeButtonBinding(KeyCode.X, spawnBomb);
+                }
+                if (nodeType == AbilityNodePickup.SEE_INVIS.ToString() && btn.name == "SeeInvisInventory")
+                {
+                    seeInvis = new SeeInvisibility(globalVolume,normalVisionProfile,ultravioletVisionProfile);
+                    addAvailableAction(seeInvis);
+                    //changeButtonBinding(KeyCode.I, seeInvis);
+                    //changeButtonBinding(KeyCode.Joystick1Button3, seeInvis);
+                    btn.interactable = true;
+                }
+            }
+
+            /*
             if (nodeType == AbilityNodePickup.LEFT.ToString())
             {
                 Walk left = new Walk();
@@ -211,8 +260,6 @@ public class PlayerControls : MonoBehaviour
                 addAvailableAction(jump);
 
                 changeButtonBinding(KeyCode.Z, jump);
-                Debug.Log("Jump-Fähigkeit aktiviert. Taste Z zum Springen.");
-
             }
 
             if(nodeType == AbilityNodePickup.CLIMBUP.ToString()) 
@@ -232,17 +279,18 @@ public class PlayerControls : MonoBehaviour
             }
             if(nodeType == AbilityNodePickup.SEE_INVIS.ToString())
             {
-                SeeInvisibility seeInvis = new SeeInvisibility();
+                SeeInvisibility seeInvis = new SeeInvisibility(globalVolume, normalVisionProfile, ultravioletVisionProfile);
                 addAvailableAction(seeInvis);
                 changeButtonBinding(KeyCode.I, seeInvis);
             }
+            */
+
             Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");
 
             Destroy(collision.gameObject);
         }
         
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Workbench"))
@@ -251,7 +299,7 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    private void UpdateBatteryUI() 
+    private void UpdateBatteryUI()
     {
         int activePipCount = Mathf.FloorToInt(currentEnergy / 10f);
 
@@ -267,7 +315,6 @@ public class PlayerControls : MonoBehaviour
 
     private void Update()
     {
-        
         movement.purgeHorizontalVelocity();
         foreach(KeyCode button in buttonBindings.Keys)
         {
@@ -275,11 +322,6 @@ public class PlayerControls : MonoBehaviour
             {
                 buttonBindings[button].execute(gameObject);
                 //Debug.Log(GetComponent<Rigidbody2D>().linearVelocityX);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                Debug.Log("Z-Taste wurde gedrückt!");
             }
         }
 
@@ -296,7 +338,7 @@ public class PlayerControls : MonoBehaviour
                 buttonBindings[KeyCode.LeftArrow]?.execute(gameObject);
             }
 
-            if(buttonBindings.TryGetValue(KeyCode.UpArrow, out var upAction) && dpadValue.y > 0.5f) 
+            if (buttonBindings.TryGetValue(KeyCode.UpArrow, out var upAction) && dpadValue.y > 0.5f)
             {
                 //buttonBindings[KeyCode.UpArrow]?.execute(gameObject);
                 upAction.execute(gameObject);
@@ -307,10 +349,8 @@ public class PlayerControls : MonoBehaviour
         currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.unscaledDeltaTime * maxEnergy / maxEnergyLimit);
 
         UpdateBatteryUI();
-        
-        //currentEnergyText.text = ((int)currentEnergy / 10).ToString();
 
-        if (insideWorkbench && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button1))) 
+        if (insideWorkbench && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button1)))
         {
             if (!abilityInventoryMenu.activeSelf)
             {
@@ -318,8 +358,8 @@ public class PlayerControls : MonoBehaviour
                 Time.timeScale = 0;
                 UpdateBatteryUI();
             }
-            else 
-            { 
+            else
+            {
                 abilityInventoryMenu.SetActive(false);
                 Time.timeScale = 1;
             }

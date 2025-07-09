@@ -13,8 +13,6 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
 
     GameObject lastSelected;
 
-    public Button fallbackButton;
-
 
     private void Awake()
     {
@@ -32,10 +30,10 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
 
     public void OnButtonClicked(Button currentButton)
     {
-        
+
         Button[] allButtons = Resources.FindObjectsOfTypeAll<Button>();
 
-        
+
         foreach (Button btn in allButtons)
         {
             if (btn != currentButton && btn.gameObject.activeInHierarchy && btn.interactable)
@@ -45,7 +43,7 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
             }
         }
 
-        
+
         currentButton.gameObject.SetActive(false);
     }
 
@@ -55,7 +53,7 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
     {
         descriptionBoxTextUI.text = description + "\n" +
                                     "\n" +
-                                    "Slot position: " + slotPositions + " Slot" +"\n" +
+                                    "Slot position: " + slotPositions + " Slot" + "\n" +
                                     "\n" +
                                     "Keybind: " + keyBindDescription + "\n" +
                                     "\n" +

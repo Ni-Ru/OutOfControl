@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 3
   tags:
   - NodePickup
-  - Workbench
-  - BatteryPip
   layers:
   - Default
   - TransparentFX
@@ -16,7 +14,7 @@ TagManager:
   - UI
   - Ground
   - Bomb
-  - Wall
+  - Climbing Wall
   - 
   - 
   - 
