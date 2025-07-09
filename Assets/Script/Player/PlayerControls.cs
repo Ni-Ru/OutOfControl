@@ -66,8 +66,12 @@ public class PlayerControls : MonoBehaviour
             if (btn.name == "ClimbUpEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
             if (btn.name == "SeeInvisEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
 
+            if (btn.name == "SeeInvisInventory") btn.interactable = false;
+            if (btn.name == "ClimbUpInventory") btn.interactable = false;
+
             if (btn.name == "JumpInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
-            if (btn.name == "JumpEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
+
+            if (btn.name == "JumpEquip") btn.interactable = false; //btn.gameObject.SetActive(true);
 
             if (btn.name == "NormalEyeInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
             if (btn.name == "NormalEyeEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
@@ -80,9 +84,9 @@ public class PlayerControls : MonoBehaviour
 
         Walk right = new Walk();
         Walk left = new Walk();
-        jump = new Jump();
-        climbUp = new ClimbUp();
-        seeInvis = new SeeInvisibility();
+        //jump = new Jump();
+        //climbUp = new ClimbUp();
+        //seeInvis = new SeeInvisibility();
 
         right.isRight = true;
         playerSprite = GetComponent<PlayerSprite>();
@@ -90,8 +94,8 @@ public class PlayerControls : MonoBehaviour
         changeButtonBinding(KeyCode.RightArrow, right);
         changeButtonBinding(KeyCode.LeftArrow, left);
 
-        changeButtonBinding(KeyCode.Z, jump);
-        changeButtonBinding(KeyCode.Joystick1Button2, jump);
+        //changeButtonBinding(KeyCode.Z, jump);
+        //changeButtonBinding(KeyCode.Joystick1Button2, jump);
 
         abilityInventoryMenu.SetActive(false);
     }
@@ -190,6 +194,53 @@ public class PlayerControls : MonoBehaviour
         {
             string nodeType = collision.gameObject.GetComponent<NodePickup>().GetNodeType();
 
+            foreach (Button btn in abilityUIButtons)
+            {
+                if (nodeType == AbilityNodePickup.LEFT.ToString())
+                {
+                    Walk left = new Walk();
+                    addAvailableAction(left);
+
+                    changeButtonBinding(KeyCode.LeftArrow, left);
+
+                }
+
+                if (nodeType == AbilityNodePickup.JUMP.ToString() && (btn.name == "JumpInventory"))
+                {
+                    Jump jump = new Jump();
+                    addAvailableAction(jump);
+
+                    //changeButtonBinding(KeyCode.Z, jump);
+                    //changeButtonBinding(KeyCode.Joystick1Button2, jump);
+                    btn.interactable = true;
+                }
+
+                if (nodeType == AbilityNodePickup.CLIMBUP.ToString() && btn.name == "ClimbUpEquip")
+                {
+                    ClimbUp climbUp = new ClimbUp();
+                    addAvailableAction(climbUp);
+
+                    //changeButtonBinding(KeyCode.UpArrow, climbUp);
+                }
+
+                if (nodeType == AbilityNodePickup.BOMB.ToString())
+                {
+                    SpawnBomb spawnBomb = new SpawnBomb();
+                    addAvailableAction(spawnBomb);
+
+                    //changeButtonBinding(KeyCode.X, spawnBomb);
+                }
+                if (nodeType == AbilityNodePickup.SEE_INVIS.ToString() && btn.name == "SeeInvisInventory")
+                {
+                    SeeInvisibility seeInvis = new SeeInvisibility();
+                    addAvailableAction(seeInvis);
+                    //changeButtonBinding(KeyCode.I, seeInvis);
+                    //changeButtonBinding(KeyCode.Joystick1Button3, seeInvis);
+                    btn.interactable = true;
+                }
+            }
+
+            /*
             if (nodeType == AbilityNodePickup.LEFT.ToString())
             {
                 Walk left = new Walk();
@@ -228,6 +279,8 @@ public class PlayerControls : MonoBehaviour
                 addAvailableAction(seeInvis);
                 changeButtonBinding(KeyCode.I, seeInvis);
             }
+            */
+
             Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");
 
             Destroy(collision.gameObject);
