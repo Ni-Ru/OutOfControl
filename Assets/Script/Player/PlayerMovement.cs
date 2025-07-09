@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundCollisionRadius;
     [SerializeField] Vector2 rightOffset;
     [SerializeField] Vector2 leftOffset;
+    [SerializeField] private Animator animator;
 
     private void Awake()
     {
@@ -59,6 +60,13 @@ public class PlayerMovement : MonoBehaviour
 
         isTouchingWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, wallCollisionRadius, climbingWallLayer) ||
                          Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, wallCollisionRadius, climbingWallLayer);
+        if(Mathf.Abs(rigid.linearVelocityX) > 0)
+        {
+            animator.enabled = true;
+            animator.SetBool("isWalking", true);
+        }else animator.SetBool("isWalking", false);
+        if (rigid.linearVelocityX < 0) transform.rotation = new Quaternion(0, 180, 0, 0);
+        if (rigid.linearVelocityX > 0) transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     private void OnDrawGizmos()

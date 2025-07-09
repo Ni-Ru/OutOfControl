@@ -6,18 +6,21 @@ using UnityEngine;
 public class PlayerSprite : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D playerCollider;
-    [SerializeField] private SpriteRenderer torsoSprite;
+    [SerializeField] private SpriteRenderer playerSprite;
+    [SerializeField] private Sprite jumpingLegsSprite;
+    [SerializeField] private Sprite noLegsSprite;
+    [SerializeField] private Animator animator;
+    /*
     [SerializeField] private SpriteRenderer legSprite;
     [SerializeField] private SpriteRenderer eyeSprite;
     [SerializeField] private SpriteRenderer armSprite1;
     [SerializeField] private SpriteRenderer armSprite2;
-
     private Dictionary<KeyCode, Sprite> bodyParts;
     private Dictionary<KeyCode, Sprite> defaultParts;
-
+    */
     private Vector2 tallHitbox = new Vector2(-0.046875f, 0.90625f);
     private Vector2 shortHitbox = new Vector2(0.03125f, 0.75f);
-
+    /*
     private void Awake()
     {
         loadBodyParts();
@@ -30,9 +33,25 @@ public class PlayerSprite : MonoBehaviour
         //load the body parts (and animations?) from resources
         bodyParts[KeyCode.Z] = Resources.Load<Sprite>("jumping-legs");
     }
-
+    */
     public void adjustBodyParts(Dictionary<KeyCode, PlayerAction> equippedActions)
     {
+        animator.enabled = false;
+        if (equippedActions.Keys.Contains(KeyCode.Z))
+        {
+            playerSprite.sprite = jumpingLegsSprite;
+            animator.SetBool("hasJumpingLegs", true);
+            playerCollider.offset = new Vector2(0, tallHitbox.x);
+            playerCollider.size = new Vector2(playerCollider.size.x, tallHitbox.y);
+        } else
+        {
+            playerSprite.sprite = noLegsSprite;
+            animator.SetBool("hasJumpingLegs", false);
+            playerCollider.offset = new Vector2(0, shortHitbox.x);
+            playerCollider.size = new Vector2(playerCollider.size.x, shortHitbox.y);
+        }
+        //animator.enabled = true;
+        /*
         if (!equippedActions.Keys.Contains(KeyCode.Z) && !equippedActions.Keys.Contains(KeyCode.UpArrow))
         {
             //no legs, adapt Sprite, Collider, Animation
