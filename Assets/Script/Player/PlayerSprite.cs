@@ -11,31 +11,13 @@ public class PlayerSprite : MonoBehaviour
     [SerializeField] private Sprite noLegsSprite;
     [SerializeField] private Sprite jumpingLegsSpriteEyes;
     [SerializeField] private Sprite noLegsSpriteEyes;
+    [SerializeField] private Sprite climbingLegsSpriteEyes;
+    [SerializeField] private Sprite climbingLegsSprite;
     [SerializeField] private Animator animator;
-    /*
-    [SerializeField] private SpriteRenderer legSprite;
-    [SerializeField] private SpriteRenderer eyeSprite;
-    [SerializeField] private SpriteRenderer armSprite1;
-    [SerializeField] private SpriteRenderer armSprite2;
-    private Dictionary<KeyCode, Sprite> bodyParts;
-    private Dictionary<KeyCode, Sprite> defaultParts;
-    */
+
     private Vector2 tallHitbox = new Vector2(-0.046875f, 0.90625f);
     private Vector2 shortHitbox = new Vector2(0.03125f, 0.75f);
-    /*
-    private void Awake()
-    {
-        loadBodyParts();
-    }
 
-    private void loadBodyParts()
-    {
-        bodyParts = new Dictionary<KeyCode, Sprite>();
-        defaultParts = new Dictionary<KeyCode, Sprite>();
-        //load the body parts (and animations?) from resources
-        bodyParts[KeyCode.Z] = Resources.Load<Sprite>("jumping-legs");
-    }
-    */
     public void adjustBodyParts(Dictionary<KeyCode, PlayerAction> equippedActions)
     {
         animator.enabled = false;
@@ -45,12 +27,22 @@ public class PlayerSprite : MonoBehaviour
         {
             playerSprite.sprite = hasEyes? jumpingLegsSpriteEyes: jumpingLegsSprite;
             animator.SetBool("hasJumpingLegs", true);
+            animator.SetBool("hasClimbingLegs", false);
+            playerCollider.offset = new Vector2(0, tallHitbox.x);
+            playerCollider.size = new Vector2(playerCollider.size.x, tallHitbox.y);
+        }
+        else if (equippedActions.Keys.Contains(KeyCode.UpArrow))
+        {
+            playerSprite.sprite = hasEyes ? climbingLegsSpriteEyes : climbingLegsSprite;
+            animator.SetBool("hasJumpingLegs", false);
+            animator.SetBool("hasClimbingLegs", true);
             playerCollider.offset = new Vector2(0, tallHitbox.x);
             playerCollider.size = new Vector2(playerCollider.size.x, tallHitbox.y);
         } else
         {
             playerSprite.sprite = hasEyes? noLegsSpriteEyes : noLegsSprite;
             animator.SetBool("hasJumpingLegs", false);
+            animator.SetBool("hasClimbingLegs", false);
             playerCollider.offset = new Vector2(0, shortHitbox.x);
             playerCollider.size = new Vector2(playerCollider.size.x, shortHitbox.y);
         }
