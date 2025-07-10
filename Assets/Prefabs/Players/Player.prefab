@@ -248,17 +248,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47050ac15a5a6a4aaa7baa446cac7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundOffset: {x: 0, y: 0}
+  isGrounded: 1
+  groundOffset: {x: 0, y: -0.91}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   climbingWallLayer:
     serializedVersion: 2
     m_Bits: 256
+  isTouchingWall: 0
   wallCollisionRadius: 0.5
-  groundCollisionRadius: 2
-  rightOffset: {x: 0.57, y: 0.5}
-  leftOffset: {x: -0.565, y: 0.5}
+  groundCollisionRadius: 0.5
+  rightOffset: {x: 0.2, y: -0.5}
+  leftOffset: {x: -0.2, y: -0.5}
   animator: {fileID: 5636340084162058772}
 --- !u!114 &7802244308538447342
 MonoBehaviour:

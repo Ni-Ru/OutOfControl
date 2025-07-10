@@ -37,6 +37,7 @@ public class PlayerControls : MonoBehaviour
     SeeInvisibility seeInvis;
 
     bool insideWorkbench = false;
+    private bool consumingEnergy = false;
 
 
     private void Awake()
@@ -200,7 +201,6 @@ public class PlayerControls : MonoBehaviour
 
             foreach (Button btn in abilityUIButtons)
             {
-                Debug.Log("aaa");
                 if (nodeType == AbilityNodePickup.LEFT.ToString())
                 {
                     Walk left = new Walk();
@@ -306,8 +306,8 @@ public class PlayerControls : MonoBehaviour
 
             }
         }
-
-        currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.unscaledDeltaTime * maxEnergy / maxEnergyLimit);
+        if (consumingEnergy) consumingEnergy = false;
+        else currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.deltaTime * maxEnergy / maxEnergyLimit);
 
         UpdateBatteryUI();
 
@@ -331,6 +331,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (amount > currentEnergy) return false;
         currentEnergy -= amount;
+        consumingEnergy = true;
         return true;
     }
 }

@@ -4,10 +4,14 @@ public class ClimbUp : PlayerAction
 {
     public static readonly float climbSpeed = 300;
     private PlayerMovement movement;
+    private PlayerControls controls;
 
     public override void execute(GameObject player)
     {
-        if (movement == null) movement = player.GetComponent<PlayerMovement>();
-        movement.addClimbingUp(climbSpeed * Time.fixedDeltaTime);
+        if (movement == null) {
+            movement = player.GetComponent<PlayerMovement>();
+            controls = player.GetComponent<PlayerControls>();
+        }
+        if(movement.isTouchingWall && controls.tryConsumeEnergy(15 * Time.deltaTime)) movement.addClimbingUp(climbSpeed * Time.fixedDeltaTime);
     }
 }

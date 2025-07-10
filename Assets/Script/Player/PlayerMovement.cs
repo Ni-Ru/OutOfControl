@@ -6,13 +6,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rigid;
     private Transform playerPosition;
 
-    bool isGrounded = true;
+    public bool isGrounded = true;
     [SerializeField] Vector2 groundOffset;
 
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask climbingWallLayer;
 
-    bool isTouchingWall = false;
+    public bool isTouchingWall = false;
     [SerializeField] float wallCollisionRadius;
     [SerializeField] float groundCollisionRadius;
     [SerializeField] Vector2 rightOffset;
@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rigid.linearVelocityY = speed;
         }
-        
     }
 
     public void addClimbingUp(float speed)
