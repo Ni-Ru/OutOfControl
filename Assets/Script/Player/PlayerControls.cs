@@ -279,12 +279,13 @@ public class PlayerControls : MonoBehaviour
         movement.purgeHorizontalVelocity();
         foreach(KeyCode button in buttonBindings.Keys)
         {
-            if (Input.GetKey(button))
+            if (Input.GetKey(button) && button != KeyCode.I)
             {
                 buttonBindings[button].execute(gameObject);
                 //Debug.Log(GetComponent<Rigidbody2D>().linearVelocityX);
             }
         }
+        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Joystick1Button3)) buttonBindings[KeyCode.I].execute(gameObject);
 
         if (Gamepad.current != null)
         {

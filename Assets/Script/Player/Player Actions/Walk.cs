@@ -6,6 +6,7 @@ public class Walk : PlayerAction
     public bool isRight;
     private PlayerMovement movement;
     private PlayerControls playerControls;
+    new public int maxEnergyPenalty = 0;
 
     public override void execute(GameObject player)
     {

@@ -8,6 +8,7 @@ public class SeeInvisibility : PlayerAction
     private readonly Volume _globalVolume;
     private readonly VolumeProfile _normalVisionProfile;
     private readonly VolumeProfile _ultravioletVisionProfile;
+    new public int maxEnergyPenalty = 20;
 
     public SeeInvisibility(Volume globalVolume, VolumeProfile normalVisionProfile, VolumeProfile ultravioletVisionProfile)
     {

@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + groundOffset, groundCollisionRadius, groundLayer);
+        isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + groundOffset, groundCollisionRadius, groundLayer) || Physics2D.OverlapCircle((Vector2)transform.position + groundOffset, groundCollisionRadius, climbingWallLayer);
 
         isTouchingWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, wallCollisionRadius, climbingWallLayer) ||
                          Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, wallCollisionRadius, climbingWallLayer);

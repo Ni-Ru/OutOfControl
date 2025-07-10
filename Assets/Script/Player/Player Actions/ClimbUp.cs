@@ -5,6 +5,7 @@ public class ClimbUp : PlayerAction
     public static readonly float climbSpeed = 300;
     private PlayerMovement movement;
     private PlayerControls controls;
+    new public int maxEnergyPenalty = 10;
 
     public override void execute(GameObject player)
     {
