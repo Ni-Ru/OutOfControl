@@ -221,7 +221,7 @@ public class PlayerControls : MonoBehaviour
 
                 if (nodeType == AbilityNodePickup.CLIMBUP.ToString() && btn.name == "ClimbUpInventory")
                 {
-                    ClimbUp climbUp = new ClimbUp();
+                    climbUp = new ClimbUp();
                     addAvailableAction(climbUp);
 
                     //changeButtonBinding(KeyCode.UpArrow, climbUp);

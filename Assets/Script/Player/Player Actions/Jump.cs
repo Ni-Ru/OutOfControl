@@ -13,7 +13,6 @@ public class Jump : PlayerAction
             movement = player.GetComponent<PlayerMovement>();
             controls = player.GetComponent<PlayerControls>();
         }
-        Debug.Log("a");
         if(controls.tryConsumeEnergy(30)) movement.addJump(Time.fixedDeltaTime * jumpSpeed);
     }
 }

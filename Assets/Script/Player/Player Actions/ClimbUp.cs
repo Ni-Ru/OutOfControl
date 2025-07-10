@@ -8,7 +8,6 @@ public class ClimbUp : PlayerAction
     public override void execute(GameObject player)
     {
         if (movement == null) movement = player.GetComponent<PlayerMovement>();
-
         movement.addClimbingUp(climbSpeed * Time.fixedDeltaTime);
     }
 }
