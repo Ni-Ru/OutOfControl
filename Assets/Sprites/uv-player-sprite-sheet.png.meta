@@ -151,10 +151,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 223
-        width: 20
-        height: 31
+        x: 0
+        y: 288
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +173,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_1
       rect:
         serializedVersion: 2
-        x: 38
-        y: 223
-        width: 20
-        height: 30
+        x: 32
+        y: 288
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_2
       rect:
         serializedVersion: 2
-        x: 7
-        y: 191
-        width: 18
-        height: 31
+        x: 0
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +217,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_3
       rect:
         serializedVersion: 2
-        x: 39
-        y: 191
-        width: 18
-        height: 30
+        x: 32
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_4
       rect:
         serializedVersion: 2
-        x: 7
-        y: 159
-        width: 18
-        height: 26
+        x: 0
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,10 +261,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_5
       rect:
         serializedVersion: 2
-        x: 6
-        y: 127
-        width: 20
-        height: 31
+        x: 0
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,10 +283,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_6
       rect:
         serializedVersion: 2
-        x: 37
-        y: 127
-        width: 22
-        height: 31
+        x: 32
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,10 +305,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_7
       rect:
         serializedVersion: 2
-        x: 7
-        y: 95
-        width: 18
-        height: 31
+        x: 0
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,10 +327,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_8
       rect:
         serializedVersion: 2
-        x: 39
-        y: 95
-        width: 18
-        height: 31
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,10 +349,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_9
       rect:
         serializedVersion: 2
-        x: 6
-        y: 63
-        width: 20
-        height: 26
+        x: 0
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,10 +371,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_10
       rect:
         serializedVersion: 2
-        x: 38
-        y: 63
-        width: 22
-        height: 27
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,10 +393,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_11
       rect:
         serializedVersion: 2
-        x: 6
-        y: 31
-        width: 20
-        height: 31
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,10 +415,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_12
       rect:
         serializedVersion: 2
-        x: 36
-        y: 31
-        width: 23
-        height: 30
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -437,10 +437,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_13
       rect:
         serializedVersion: 2
-        x: 69
-        y: 31
-        width: 22
-        height: 30
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -459,10 +459,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_14
       rect:
         serializedVersion: 2
-        x: 7
-        y: 0
-        width: 18
-        height: 30
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,10 +481,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_15
       rect:
         serializedVersion: 2
-        x: 39
-        y: 0
-        width: 18
-        height: 29
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -503,10 +503,10 @@ TextureImporter:
       name: uv-player-sprite-sheet_16
       rect:
         serializedVersion: 2
-        x: 71
-        y: 0
-        width: 18
-        height: 29
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -521,11 +521,99 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: uv-player-sprite-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769eb2823e9022d438ecba6994e5c8d3
+      internalID: -1746192778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uv-player-sprite-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97f70b1be9f69ad43b606528cb83af79
+      internalID: 514206432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uv-player-sprite-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9fb7e95754795b46b2ae744b287a04f
+      internalID: 1761104237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uv-player-sprite-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21646712e04d1945bf25d4ec376ed3a
+      internalID: 1029180907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 10279375abfdaf442bb5518e51e8ac6a
     internalID: 0
     vertices: []
     indices: 
@@ -544,7 +632,11 @@ TextureImporter:
       uv-player-sprite-sheet_14: -806591055174759342
       uv-player-sprite-sheet_15: 2512549486410224230
       uv-player-sprite-sheet_16: -8706468604747483176
+      uv-player-sprite-sheet_17: -1746192778
+      uv-player-sprite-sheet_18: 514206432
+      uv-player-sprite-sheet_19: 1761104237
       uv-player-sprite-sheet_2: 8256300692734320821
+      uv-player-sprite-sheet_20: 1029180907
       uv-player-sprite-sheet_3: 6999524008328768686
       uv-player-sprite-sheet_4: -5334467431336190485
       uv-player-sprite-sheet_5: 1046638160788337659
