@@ -10,13 +10,14 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
     [SerializeField] int cost;
     [SerializeField] string keyBindDescription;
     [SerializeField] TextMeshProUGUI descriptionBoxTextUI;
+    private PlayerControls playerControls;
 
     GameObject lastSelected;
-
 
     private void Awake()
     {
         descriptionBoxTextUI = GameObject.Find("DescriptionBoxText").GetComponent<TextMeshProUGUI>();
+        playerControls = GameObject.Find("Player").GetComponent<PlayerControls>();
     }
 
     private void Update()
@@ -47,7 +48,31 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
         currentButton.gameObject.SetActive(false);
     }
 
+    public void MakeButtonInteractable(GameObject button)
+    {
 
+        if (button == null)
+        {
+            Debug.LogError("Button reference is not set.");
+            return;
+        }
+
+        string buttonTag = button.tag;
+        bool isInteractable = false;
+
+        foreach (var action in playerControls.availableActions)
+        {
+            Debug.Log(action.ToString());
+
+            if (action.ToString() == buttonTag) 
+            {
+                isInteractable = true;
+                break;
+            }
+        }
+
+        button.gameObject.GetComponent<Button>().interactable = isInteractable;
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -64,7 +89,7 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
     {
         descriptionBoxTextUI.text = description + "\n" +
                                     "\n" +
-                                    "Slot position: " + slotPositions + " Slot" + "\n" +
+                                    "Slot position: " + slotPositions + "\n" +
                                     "\n" +
                                     "Keybind: " + keyBindDescription + "\n" +
                                     "\n" +

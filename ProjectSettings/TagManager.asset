@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - NodePickup
+  - BatteryPip
+  - Workbench
+  - Jump
+  - SeeInvisibility
+  - ClimbUp
   layers:
   - Default
   - TransparentFX

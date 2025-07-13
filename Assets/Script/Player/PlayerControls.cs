@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -26,7 +27,7 @@ public class PlayerControls : MonoBehaviour
     private PlayerSprite playerSprite;
 
     private Dictionary<KeyCode, bool> buttonAvailability;
-    private List<PlayerAction> availableActions;
+    public List<PlayerAction> availableActions;
     private Dictionary<KeyCode, PlayerAction> buttonBindings;
     private float energyRechargeRate = 50;
     private Color32 batteryUnusedColor = new Color32(0, 201, 255, 255);
@@ -69,17 +70,17 @@ public class PlayerControls : MonoBehaviour
         {
             btn.onClick.AddListener(() => onButtonClicked(btn.name));
 
-            if (btn.name == "ClimbUpEquip") btn.gameObject.SetActive(false);
-            if (btn.name == "SeeInvisEquip") btn.gameObject.SetActive(false);
+            if (btn.name == "ClimbUpEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
+            if (btn.name == "SeeInvisEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
 
-            if (btn.name == "SeeInvisInventory") btn.gameObject.SetActive(false);
-            if (btn.name == "ClimbUpInventory") btn.gameObject.SetActive(false);
+            if (btn.name == "SeeInvisInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
+            if (btn.name == "ClimbUpInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
 
-            if (btn.name == "JumpInventory") btn.gameObject.SetActive(false);
-            //if (btn.name == "JumpEquip") btn.interactable = false; //btn.gameObject.SetActive(true);
+            if (btn.name == "JumpInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
+            if (btn.name == "JumpEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
 
-            if (btn.name == "NormalEyeInventory") btn.gameObject.SetActive(false);
-            if (btn.name == "NormalEyeEquip") btn.gameObject.SetActive(true);
+            if (btn.name == "NormalEyeInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
+            if (btn.name == "NormalEyeEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
         }
 
         foreach (var batteryPip in batteryPips)
@@ -90,8 +91,6 @@ public class PlayerControls : MonoBehaviour
         Walk right = new Walk();
         Walk left = new Walk();
         jump = new Jump();
-        //climbUp = new ClimbUp();
-        //seeInvis = new SeeInvisibility();
 
         right.isRight = true;
         playerSprite = GetComponent<PlayerSprite>();
@@ -101,6 +100,7 @@ public class PlayerControls : MonoBehaviour
 
         changeButtonBinding(KeyCode.Z, jump);
         changeButtonBinding(KeyCode.Joystick1Button2, jump);
+        addAvailableAction(jump);
 
         abilityInventoryMenu.SetActive(false);
     }
@@ -212,12 +212,13 @@ public class PlayerControls : MonoBehaviour
 
                 if (nodeType == AbilityNodePickup.JUMP.ToString() && (btn.name == "JumpInventory"))
                 {
-                    Jump jump = new Jump();
+                    jump = new Jump();
                     addAvailableAction(jump);
 
                     //changeButtonBinding(KeyCode.Z, jump);
                     //changeButtonBinding(KeyCode.Joystick1Button2, jump);
-                    btn.gameObject.SetActive(true);
+                    //btn.gameObject.SetActive(true);
+                    btn.interactable = true;
                 }
 
                 if (nodeType == AbilityNodePickup.CLIMBUP.ToString() && btn.name == "ClimbUpInventory")
@@ -226,7 +227,7 @@ public class PlayerControls : MonoBehaviour
                     addAvailableAction(climbUp);
 
                     //changeButtonBinding(KeyCode.UpArrow, climbUp);
-                    btn.gameObject.SetActive(true);
+                    btn.interactable = true;
                 }
 
                 if (nodeType == AbilityNodePickup.BOMB.ToString())
@@ -242,8 +243,13 @@ public class PlayerControls : MonoBehaviour
                     addAvailableAction(seeInvis);
                     //changeButtonBinding(KeyCode.I, seeInvis);
                     //changeButtonBinding(KeyCode.Joystick1Button3, seeInvis);
-                    btn.gameObject.SetActive(true);
+                    btn.interactable = true;
                 }
+            }
+
+            foreach (var action in availableActions)
+            {
+                Debug.Log(action.ToString());
             }
 
             Debug.Log(collision.gameObject.GetComponent<NodePickup>().GetNodeType() + " node picked up");
