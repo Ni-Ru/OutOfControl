@@ -1287,7 +1287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: see invisible object
   slotPositions: 0
-  cost: 20
+  cost: 10
   keyBindDescription: I (Keyboard) / Y (Controller)
   descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &1980612951297771049
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: see invisible objects
   slotPositions: 0
-  cost: 20
+  cost: 10
   keyBindDescription: I (Keyboard) / Y (Controller)
   descriptionBoxTextUI: {fileID: 0}
 --- !u!1 &3031947517799529382
