@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 230739953148372830}
   - component: {fileID: 738794146342659694}
   - component: {fileID: 237732736195859273}
+  - component: {fileID: 4103595662137043750}
   m_Layer: 0
   m_Name: Workbench
   m_TagString: Workbench
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -909752649, guid: 033f638bff1f52c44a895212d538739d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -134,3 +135,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.02672, y: 1.4726181}
   m_EdgeRadius: 0
+--- !u!114 &4103595662137043750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111713596042403332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6f35e4d0286be478a0c1c041ecd02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

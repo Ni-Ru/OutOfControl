@@ -208,7 +208,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1952892042214446525, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2
+      value: -5.31
       objectReference: {fileID: 0}
     - target: {fileID: 1952892042214446525, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
       propertyPath: m_LocalPosition.y
@@ -246,17 +246,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3191110064901996537, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4597496601283181436, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5636340084162058772, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -411,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 230739953148372830, guid: 22e5518b0de89e24f8fa8dc60964a5b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.21
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 230739953148372830, guid: 22e5518b0de89e24f8fa8dc60964a5b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -545,6 +537,10 @@ PrefabInstance:
     - target: {fileID: 8929650628212492459, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
       propertyPath: m_Name
       value: AbilityInventoryMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929650628212492459, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -746,7 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
