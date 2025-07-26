@@ -296,17 +296,18 @@ public class PlayerControls : MonoBehaviour
         if (Gamepad.current != null)
         {
             Vector2 dpadValue = Gamepad.current.dpad.ReadValue();
+            Vector2 leftStickValue = Gamepad.current.leftStick.ReadValue();
 
-            if (dpadValue.x > 0.5f)
+            if (dpadValue.x > 0.5f || leftStickValue.x > 0.5f)
             {
                 buttonBindings[KeyCode.RightArrow]?.execute(gameObject);
             }
-            else if (dpadValue.x < -0.5f)
+            else if (dpadValue.x < -0.5f || leftStickValue.x < -0.5f)
             {
                 buttonBindings[KeyCode.LeftArrow]?.execute(gameObject);
             }
 
-            if (buttonBindings.TryGetValue(KeyCode.UpArrow, out var upAction) && dpadValue.y > 0.5f)
+            if (buttonBindings.TryGetValue(KeyCode.UpArrow, out var upAction) && (dpadValue.y > 0.5f || leftStickValue.y > 0.5f))
             {
                 //buttonBindings[KeyCode.UpArrow]?.execute(gameObject);
                 upAction.execute(gameObject);
