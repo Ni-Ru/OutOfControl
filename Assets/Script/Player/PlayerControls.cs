@@ -31,6 +31,8 @@ public class PlayerControls : MonoBehaviour
     private Dictionary<KeyCode, PlayerAction> buttonBindings;
     private float energyRechargeRate = 50;
     private Color32 batteryUnusedColor = new Color32(0, 201, 255, 255);
+    private Color32 batteryHalfUsedColor = new Color32(254, 255, 0, 255);
+    private Color32 batteryAlmostUsedColor = new Color32(255, 0, 0, 255);
     private Color32 batteryUsedColor = new Color32(91, 91, 91, 255);
 
     Jump jump;
@@ -132,22 +134,18 @@ public class PlayerControls : MonoBehaviour
 
             case "NormalEyeInventory":
                 changeButtonBinding(KeyCode.I, null);
-                changeButtonBinding(KeyCode.Joystick1Button3, null);
                 break;
 
             case "NormalEyeEquip":
                 changeButtonBinding(KeyCode.I, null);
-                changeButtonBinding(KeyCode.Joystick1Button3, null);
                 break;
 
             case "SeeInvisInventory":
                 changeButtonBinding(KeyCode.I, seeInvis);
-                changeButtonBinding(KeyCode.Joystick1Button3, seeInvis);
                 break;
 
             case "SeeInvisEquip":
                 changeButtonBinding(KeyCode.I, null);
-                changeButtonBinding(KeyCode.Joystick1Button3, null);
                 break;
 
             default:
@@ -270,13 +268,35 @@ public class PlayerControls : MonoBehaviour
     {
         int activePipCount = Mathf.FloorToInt(currentEnergy / 10f);
 
+        Color pipColor;
+
+        if (currentEnergy > 50)
+        {
+            pipColor = batteryUnusedColor;
+        }
+        else if (currentEnergy > 20)
+        {
+            pipColor = batteryHalfUsedColor;
+        }
+        else
+        {
+            pipColor = batteryAlmostUsedColor;
+        }
+
         for (int i = 0; i < batteryPips.Length; i++)
         {
             Image pipImage = batteryPips[i].GetComponent<Image>();
 
             if (pipImage == null) continue;
 
-            pipImage.color = (i < activePipCount) ? batteryUnusedColor : batteryUsedColor;
+            if (i < activePipCount)
+            {
+                pipImage.color = pipColor;
+            }
+            else { 
+                pipImage.color = batteryUsedColor;
+            }
+
         }
     }
 
