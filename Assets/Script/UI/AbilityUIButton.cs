@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,6 +8,7 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
 {
     [SerializeField] string description;
     [SerializeField] AbilitySlotPositions slotPositions = new AbilitySlotPositions();
+    [SerializeField] PlayerAction.AbilityName abilityName;
     [SerializeField] int cost;
     [SerializeField] string keyBindDescription;
     [SerializeField] TextMeshProUGUI descriptionBoxTextUI;
@@ -18,6 +20,13 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
     {
         descriptionBoxTextUI = GameObject.Find("DescriptionBoxText").GetComponent<TextMeshProUGUI>();
         playerControls = GameObject.Find("Player").GetComponent<PlayerControls>();
+        GetComponent<Button>().onClick.AddListener(() => click());
+    }
+
+    private void OnEnable()
+    {
+        Button btn = GetComponent<Button>();
+        btn.interactable = playerControls.availableActions.Contains(abilityName);
     }
 
     private void Update()
@@ -27,6 +36,11 @@ public class AbilityUIButton : MonoBehaviour, IPointerEnterHandler, ISelectHandl
 
         if (EventSystem.current.currentSelectedGameObject == null && lastSelected != null)
             EventSystem.current.SetSelectedGameObject(lastSelected);
+    }
+
+    private void click()
+    {
+        playerControls.changeButtonBinding(slotPositions, PlayerAction.parseAbilityName(abilityName));
     }
 
     public void OnButtonClicked(Button currentButton)

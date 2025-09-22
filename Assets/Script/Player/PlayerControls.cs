@@ -9,16 +9,10 @@ using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
 {
-    [SerializeField] private Volume globalVolume;
-    [SerializeField] private VolumeProfile normalVisionProfile;
-    [SerializeField] private VolumeProfile ultravioletVisionProfile;
-    
     public static float maxEnergyLimit = 100;
     public float maxEnergy { get; private set; }
     public float currentEnergy;
     [SerializeField] GameObject abilityInventoryMenu;
-    //[SerializeField] TextMeshProUGUI currentEnergyText;
-    //[SerializeField] TextMeshProUGUI maxEnergyText;
 
     [SerializeField] Button[] abilityUIButtons;
     [SerializeField] GameObject[] batteryPips;
@@ -26,9 +20,8 @@ public class PlayerControls : MonoBehaviour
     private PlayerMovement movement;
     private PlayerSprite playerSprite;
 
-    private Dictionary<KeyCode, bool> buttonAvailability;
-    public List<PlayerAction> availableActions;
-    private Dictionary<KeyCode, PlayerAction> buttonBindings;
+    public List<PlayerAction.AbilityName> availableActions;
+    private Dictionary<AbilitySlotPositions, AbilitySlot> buttonBindings;
     private float energyRechargeRate = 50;
     private Color32 batteryUnusedColor = new Color32(0, 201, 255, 255);
     private Color32 batteryHalfUsedColor = new Color32(254, 255, 0, 255);
@@ -39,25 +32,13 @@ public class PlayerControls : MonoBehaviour
     ClimbUp climbUp;
     SeeInvisibility seeInvis;
 
-    bool insideWorkbench = false;
     private bool consumingEnergy = false;
 
 
     private void Awake()
     {
-        buttonAvailability = new Dictionary<KeyCode, bool>();
-        buttonAvailability.Add(KeyCode.RightArrow, true);
-        buttonAvailability.Add(KeyCode.LeftArrow, true);
-        buttonAvailability.Add(KeyCode.UpArrow, true);
-        buttonAvailability.Add(KeyCode.DownArrow, false);
-        buttonAvailability.Add(KeyCode.Z, true); // Y in german keyboard
-        buttonAvailability.Add(KeyCode.X, true);
-        buttonAvailability.Add(KeyCode.I, true);
-        buttonAvailability.Add(KeyCode.Joystick1Button0, true); // A
-        buttonAvailability.Add(KeyCode.Joystick1Button2, true); // X
-        buttonAvailability.Add(KeyCode.Joystick1Button3, true); // Y
-        availableActions = new List<PlayerAction>();
-        buttonBindings = new Dictionary<KeyCode, PlayerAction>();
+        availableActions = new List<PlayerAction.AbilityName>();
+        buttonBindings = new Dictionary<AbilitySlotPositions, AbilitySlot>();
         movement = GetComponent<PlayerMovement>();
         maxEnergy = maxEnergyLimit;
 
@@ -67,10 +48,10 @@ public class PlayerControls : MonoBehaviour
 
         batteryPips = GameObject.FindGameObjectsWithTag("BatteryPip");
         System.Array.Reverse(batteryPips);
-
+        /*
         foreach (Button btn in abilityUIButtons)
         {
-            btn.onClick.AddListener(() => onButtonClicked(btn.name));
+            //btn.onClick.AddListener(() => onButtonClicked(btn.name));
 
             if (btn.name == "ClimbUpEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
             if (btn.name == "SeeInvisEquip") btn.interactable = false; //btn.gameObject.SetActive(false);
@@ -84,163 +65,73 @@ public class PlayerControls : MonoBehaviour
             if (btn.name == "NormalEyeInventory") btn.interactable = false; //btn.gameObject.SetActive(false);
             if (btn.name == "NormalEyeEquip") btn.interactable = true; //btn.gameObject.SetActive(true);
         }
-
+        */
         foreach (var batteryPip in batteryPips)
         {
             batteryPip.GetComponent<Image>().color = batteryUnusedColor;
         }
 
-        Walk right = new Walk();
-        Walk left = new Walk();
         jump = new Jump();
+        addAvailableAction(PlayerAction.AbilityName.Jump);
 
-        right.isRight = true;
+        buttonBindings[AbilitySlotPositions.Right] = new WalkRight();
+        buttonBindings[AbilitySlotPositions.Left] = new WalkLeft();
+        buttonBindings[AbilitySlotPositions.Legs] = new LegSlot(jump);
+        buttonBindings[AbilitySlotPositions.Eyes] = new EyeSlot(null);
+
         playerSprite = GetComponent<PlayerSprite>();
-
-        changeButtonBinding(KeyCode.RightArrow, right);
-        changeButtonBinding(KeyCode.LeftArrow, left);
-
-        changeButtonBinding(KeyCode.Z, jump);
-        changeButtonBinding(KeyCode.Joystick1Button2, jump);
-        addAvailableAction(jump);
 
         abilityInventoryMenu.SetActive(false);
     }
 
-    private void onButtonClicked(string buttonName)
-    {
-        switch (buttonName)
-        {
-            case "JumpInventory":
-                changeButtonBinding(KeyCode.Z, jump);
-                changeButtonBinding(KeyCode.Joystick1Button2, jump);
-                changeButtonBinding(KeyCode.UpArrow, null);
-                break;
-
-            case "JumpEquip":
-                changeButtonBinding(KeyCode.Z, null);
-                changeButtonBinding(KeyCode.Joystick1Button2, null);
-                break;
-
-            case "ClimbUpInventory":
-                changeButtonBinding(KeyCode.UpArrow, climbUp);
-                changeButtonBinding(KeyCode.Z, null);
-                changeButtonBinding(KeyCode.Joystick1Button2, null);
-                break;
-
-            case "ClimbUpEquip":
-                changeButtonBinding(KeyCode.UpArrow, null);
-                break;
-
-            case "NormalEyeInventory":
-                changeButtonBinding(KeyCode.I, null);
-                break;
-
-            case "NormalEyeEquip":
-                changeButtonBinding(KeyCode.I, null);
-                break;
-
-            case "SeeInvisInventory":
-                changeButtonBinding(KeyCode.I, seeInvis);
-                break;
-
-            case "SeeInvisEquip":
-                changeButtonBinding(KeyCode.I, null);
-                break;
-
-            default:
-                break;
-        }
-    }
-
-    public void enableButton(KeyCode button)
-    {
-        buttonAvailability[button] = true;
-    }
-
-    public void addAvailableAction(PlayerAction action)
+    public void addAvailableAction(PlayerAction.AbilityName action)
     {
         availableActions.Add(action);
     }
 
-    public void changeButtonBinding(KeyCode button, PlayerAction action)
+    public void changeButtonBinding(AbilitySlotPositions slot, PlayerAction action)
     {
-        if (!buttonAvailability[button]) return;
-        if (buttonBindings.ContainsKey(button)) maxEnergy += buttonBindings[button].maxEnergyPenalty;
-        if (action == null)
-        {
-            buttonBindings.Remove(button);
-            UpdateBatteryUI();
-            playerSprite.adjustBodyParts(buttonBindings);
-            return;
-        }
-        buttonBindings[button] = action;
-        maxEnergy -= action.maxEnergyPenalty;
+        if (buttonBindings.ContainsKey(slot) && buttonBindings[slot].playerAction != null) maxEnergy += buttonBindings[slot].playerAction.maxEnergyPenalty;
 
-        //currentEnergy = Mathf.Min(currentEnergy, maxEnergy);
-
+        buttonBindings[slot].playerAction = action;
+        if(action != null) maxEnergy -= action.maxEnergyPenalty;
         UpdateBatteryUI();
-
-        Debug.Log(maxEnergy);
         playerSprite.adjustBodyParts(buttonBindings);
     }
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.gameObject.CompareTag("Workbench"))
-        {
-            insideWorkbench = true;
-        }
-
         if (collision.gameObject.CompareTag("NodePickup")) 
         {
+            //addAvailableAction()
+            /*
             string nodeType = collision.gameObject.GetComponent<NodePickup>().GetNodeType();
 
             foreach (Button btn in abilityUIButtons)
             {
-                if (nodeType == AbilityNodePickup.LEFT.ToString())
-                {
-                    Walk left = new Walk();
-                    addAvailableAction(left);
-
-                    changeButtonBinding(KeyCode.LeftArrow, left);
-
-                }
-
                 if (nodeType == AbilityNodePickup.JUMP.ToString() && (btn.name == "JumpInventory"))
                 {
                     jump = new Jump();
-                    addAvailableAction(jump);
-
-                    //changeButtonBinding(KeyCode.Z, jump);
-                    //changeButtonBinding(KeyCode.Joystick1Button2, jump);
-                    //btn.gameObject.SetActive(true);
+                    addAvailableAction(PlayerAction.AbilityName.Jump);
                     btn.interactable = true;
                 }
 
                 if (nodeType == AbilityNodePickup.CLIMBUP.ToString() && btn.name == "ClimbUpInventory")
                 {
                     climbUp = new ClimbUp();
-                    addAvailableAction(climbUp);
-
-                    //changeButtonBinding(KeyCode.UpArrow, climbUp);
+                    addAvailableAction(PlayerAction.AbilityName.Climb);
                     btn.interactable = true;
                 }
-
+                /*
                 if (nodeType == AbilityNodePickup.BOMB.ToString())
                 {
                     SpawnBomb spawnBomb = new SpawnBomb();
                     addAvailableAction(spawnBomb);
-
-                    //changeButtonBinding(KeyCode.X, spawnBomb);
                 }
                 if (nodeType == AbilityNodePickup.SEE_INVIS.ToString() && btn.name == "SeeInvisInventory")
                 {
-                    seeInvis = new SeeInvisibility(globalVolume,normalVisionProfile,ultravioletVisionProfile);
-                    addAvailableAction(seeInvis);
-                    //changeButtonBinding(KeyCode.I, seeInvis);
-                    //changeButtonBinding(KeyCode.Joystick1Button3, seeInvis);
+                    seeInvis = new SeeInvisibility();
+                    addAvailableAction(PlayerAction.AbilityName.SeeInvis);
                     btn.interactable = true;
                 }
             }
@@ -256,14 +147,7 @@ public class PlayerControls : MonoBehaviour
         }
         
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Workbench"))
-        {
-            insideWorkbench = false;
-        }
-    }
-
+    */
     private void UpdateBatteryUI()
     {
         int activePipCount = Mathf.FloorToInt(currentEnergy / 10f);
@@ -303,56 +187,33 @@ public class PlayerControls : MonoBehaviour
     private void Update()
     {
         movement.purgeHorizontalVelocity();
-        foreach(KeyCode button in buttonBindings.Keys)
-        {
-            if (Input.GetKey(button) && button != KeyCode.I)
-            {
-                buttonBindings[button].execute(gameObject);
-                //Debug.Log(GetComponent<Rigidbody2D>().linearVelocityX);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Joystick1Button3)) buttonBindings[KeyCode.I].execute(gameObject);
-
         if (Gamepad.current != null)
         {
-            Vector2 dpadValue = Gamepad.current.dpad.ReadValue();
             Vector2 leftStickValue = Gamepad.current.leftStick.ReadValue();
-
-            if (dpadValue.x > 0.5f || leftStickValue.x > 0.5f)
+            if(leftStickValue.x > 0.5f)
             {
-                buttonBindings[KeyCode.RightArrow]?.execute(gameObject);
+                buttonBindings[AbilitySlotPositions.Right].playerAction.execute(gameObject);
+            } else if(leftStickValue.x < -0.5f)
+            {
+                buttonBindings[AbilitySlotPositions.Left].playerAction.execute(gameObject);
             }
-            else if (dpadValue.x < -0.5f || leftStickValue.x < -0.5f)
+            foreach(AbilitySlot slot in buttonBindings.Values)
             {
-                buttonBindings[KeyCode.LeftArrow]?.execute(gameObject);
-            }
-
-            if (buttonBindings.TryGetValue(KeyCode.UpArrow, out var upAction) && (dpadValue.y > 0.5f || leftStickValue.y > 0.5f))
-            {
-                //buttonBindings[KeyCode.UpArrow]?.execute(gameObject);
-                upAction.execute(gameObject);
-
+                if (Input.GetKey(slot.controllerInput) && slot.playerAction != null) slot.playerAction.execute(gameObject);
             }
         }
+        else
+        {
+            foreach (AbilitySlot slot in buttonBindings.Values)
+            {
+                if (Input.GetKey(slot.keyboardInput) && slot.playerAction != null) slot.playerAction.execute(gameObject);
+            }
+        }
+
         if (consumingEnergy) consumingEnergy = false;
         else currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRechargeRate * Time.deltaTime * maxEnergy / maxEnergyLimit);
 
         UpdateBatteryUI();
-
-        if (insideWorkbench && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button1)))
-        {
-            if (!abilityInventoryMenu.activeSelf)
-            {
-                abilityInventoryMenu.SetActive(true);
-                Time.timeScale = 0;
-                UpdateBatteryUI();
-            }
-            else
-            {
-                abilityInventoryMenu.SetActive(false);
-                Time.timeScale = 1;
-            }
-        }
     }
 
     public bool tryConsumeEnergy(float amount)

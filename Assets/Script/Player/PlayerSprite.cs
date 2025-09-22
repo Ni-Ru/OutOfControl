@@ -18,12 +18,12 @@ public class PlayerSprite : MonoBehaviour
     private Vector2 tallHitbox = new Vector2(-0.046875f, 0.90625f);
     private Vector2 shortHitbox = new Vector2(0.03125f, 0.75f);
 
-    public void adjustBodyParts(Dictionary<KeyCode, PlayerAction> equippedActions)
+    public void adjustBodyParts(Dictionary<AbilitySlotPositions, AbilitySlot> equippedActions)
     {
         animator.enabled = false;
-        bool hasEyes = equippedActions.ContainsKey(KeyCode.I);
+        bool hasEyes = equippedActions[AbilitySlotPositions.Eyes].playerAction != null;
         animator.SetBool("hasEyes", hasEyes);
-        if (equippedActions.Keys.Contains(KeyCode.Z))
+        if (equippedActions[AbilitySlotPositions.Legs].playerAction is Jump)//.Contains(KeyCode.Z))
         {
             playerSprite.sprite = hasEyes? jumpingLegsSpriteEyes: jumpingLegsSprite;
             animator.SetBool("hasJumpingLegs", true);
@@ -31,7 +31,7 @@ public class PlayerSprite : MonoBehaviour
             playerCollider.offset = new Vector2(0, tallHitbox.x);
             playerCollider.size = new Vector2(playerCollider.size.x, tallHitbox.y);
         }
-        else if (equippedActions.Keys.Contains(KeyCode.UpArrow))
+        else if (equippedActions[AbilitySlotPositions.Legs].playerAction is ClimbUp)
         {
             playerSprite.sprite = hasEyes ? climbingLegsSpriteEyes : climbingLegsSprite;
             animator.SetBool("hasJumpingLegs", false);
@@ -46,35 +46,5 @@ public class PlayerSprite : MonoBehaviour
             playerCollider.offset = new Vector2(0, shortHitbox.x);
             playerCollider.size = new Vector2(playerCollider.size.x, shortHitbox.y);
         }
-        //animator.enabled = true;
-        /*
-        if (!equippedActions.Keys.Contains(KeyCode.Z) && !equippedActions.Keys.Contains(KeyCode.UpArrow))
-        {
-            //no legs, adapt Sprite, Collider, Animation
-            legSprite.enabled = false;// defaultParts[KeyCode.Z];
-            playerCollider.offset = new Vector2(0, shortHitbox.x);
-            playerCollider.size = new Vector2(playerCollider.size.x, shortHitbox.y);
-        } else
-        {
-            legSprite.enabled = true;
-            playerCollider.offset = new Vector2(0, tallHitbox.x);
-            playerCollider.size = new Vector2(playerCollider.size.x, tallHitbox.y);
-            if (equippedActions.Keys.Contains(KeyCode.Z))
-            {
-                Debug.Log(equippedActions[KeyCode.Z] == null);
-                legSprite.sprite = bodyParts[KeyCode.Z];
-            }
-            else legSprite.sprite = bodyParts[KeyCode.UpArrow];
-        }
-        /*
-        if (!equippedActions.Keys.Contains(KeyCode.I))
-        {
-            eyeSprite.sprite = defaultParts[KeyCode.I];
-        }
-        else
-        {
-            eyeSprite.sprite = bodyParts[equippedActions[KeyCode.I]];
-        }
-        */
     }
 }

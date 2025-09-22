@@ -542,6 +542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7340040585846360203, guid: 47363fb3f621b444c9e294557f66c262, type: 3}
+      propertyPath: abilityInventoryMenu
+      value: 
+      objectReference: {fileID: 767108284}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -793,9 +797,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4590742748957529785, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: abilityName
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842324523569944801, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: abilityName
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915430669531887039, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: abilityName
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8929650628212492459, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
       propertyPath: m_Name
       value: AbilityInventoryMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929650628212492459, guid: 19ba77f16a4ab624db6a19882004eb0d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1121,63 +1141,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26926ecd4ae4f904eb9320abe70d8eca, type: 3}
---- !u!1 &1337701040
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1337701043}
-  - component: {fileID: 1337701042}
-  - component: {fileID: 1337701041}
-  m_Layer: 0
-  m_Name: CinemachineCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1337701041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337701040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1337701042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337701040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1337701043
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337701040}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.81, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1433782930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1473,6 +1436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScanlinesCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4629728433436740721, guid: 3f57a76167305d44c94089f9e8064d85, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6655908050239832183, guid: 3f57a76167305d44c94089f9e8064d85, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1685,7 +1652,6 @@ SceneRoots:
   - {fileID: 1433782930}
   - {fileID: 221049965}
   - {fileID: 156733599}
-  - {fileID: 1337701043}
   - {fileID: 1742636377}
   - {fileID: 134400000}
   - {fileID: 2050449423}
